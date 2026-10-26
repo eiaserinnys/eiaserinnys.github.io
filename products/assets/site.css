@@ -22,7 +22,7 @@
   --scrollbar-inset-start-hover: 3px;
   --scrollbar-inset-end-hover: 1px;
   --font-body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-mono: "IBM Plex Mono", "Pretendard Variable", Pretendard, ui-monospace, monospace;
   --zero: 0px;
   --line: 1px;
   --line-strong: 2px;
@@ -936,15 +936,12 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   color: var(--ink);
 }
 
-.diagram-figure[data-compile-depth="1"] .compile-depth-2,
-.diagram-figure[data-compile-depth="1"] .compile-depth-3,
-.diagram-figure[data-compile-depth="2"] .compile-depth-3 {
+.diagram-figure[data-compile-depth="1"] .compile-depth-2 {
   opacity: var(--dim-opacity);
 }
 
-.diagram-figure[data-compile-depth="1"] .compile-doc-depth-2,
-.diagram-figure[data-compile-depth="1"] .compile-doc-depth-3,
-.diagram-figure[data-compile-depth="2"] .compile-doc-depth-3 {
+.diagram-figure[data-compile-depth="1"] .compile-doc-view-2,
+.diagram-figure[data-compile-depth="2"] .compile-doc-view-1 {
   display: none;
 }
 
