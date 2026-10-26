@@ -354,6 +354,360 @@
     });
   });
 
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function renderSymlinkMotion(figure, rawSeconds) {
+    const cycle = 6.5;
+    const t = ((rawSeconds % cycle) + cycle) % cycle;
+    const svgs = [...figure.querySelectorAll("svg")];
+    const fadeOut = t >= 5.7 && t < 6.1 ? 1 - (t - 5.7) / 0.4 : t >= 6.1 ? (t - 6.1) / 0.4 : 1;
+    const fadeStr = String(clamp(fadeOut, 0, 1));
+    const isResetPhase = t >= 6.1;
+    const sourceUpdated = !isResetPhase && t >= 1.1;
+    const sourceFlash = !isResetPhase && t >= 1.1 && t < 1.65;
+    const pulseStarts = [1.7, 1.98, 2.26];
+    const pulseDuration = 0.55;
+    const pulseTravel = 0.52;
+    const targetUpdateTimes = pulseStarts.map(start => Number((start + pulseTravel).toFixed(2)));
+
+    svgs.forEach(svg => {
+      const sourceBox = svg.querySelector('[data-symlink-box="source"]');
+      if (sourceBox) sourceBox.classList.toggle("symlink-box--flash", sourceFlash);
+
+      const sourceVal = svg.querySelector('[data-symlink-val="source"]');
+      const sourceNum = svg.querySelector('[data-symlink-num="source"]');
+      if (sourceVal) {
+        const nextText = sourceUpdated ? "48" : "24";
+        if (sourceNum && sourceNum.textContent !== nextText) sourceNum.textContent = nextText;
+        sourceVal.classList.toggle("symlink-value--active", sourceUpdated);
+        sourceVal.setAttribute("fill-opacity", fadeStr);
+        sourceVal.style.fillOpacity = fadeStr;
+      }
+
+      const sourceLine = svg.querySelector('[data-symlink-line="source"]');
+      if (sourceLine) {
+        sourceLine.setAttribute("fill-opacity", fadeStr);
+        sourceLine.style.fillOpacity = fadeStr;
+      }
+
+      for (let i = 0; i < 3; i += 1) {
+        const updated = !isResetPhase && t >= targetUpdateTimes[i];
+        const flash = !isResetPhase && t >= targetUpdateTimes[i] && t < targetUpdateTimes[i] + 0.45;
+        const box = svg.querySelector(`[data-symlink-box="${i}"]`);
+        if (box) box.classList.toggle("symlink-box--flash", flash);
+
+        const val = svg.querySelector(`[data-symlink-val="${i}"]`);
+        const num = svg.querySelector(`[data-symlink-num="${i}"]`);
+        if (val) {
+          const nextText = updated ? "48" : "24";
+          if (num && num.textContent !== nextText) num.textContent = nextText;
+          val.classList.toggle("symlink-value--active", updated);
+          val.setAttribute("fill-opacity", fadeStr);
+          val.style.fillOpacity = fadeStr;
+        }
+
+        const lineText = svg.querySelector(`[data-symlink-line="${i}"]`);
+        if (lineText) {
+          lineText.setAttribute("fill-opacity", fadeStr);
+          lineText.style.fillOpacity = fadeStr;
+        }
+
+        const pulse = svg.querySelector(`[data-symlink-pulse="${i}"]`);
+        if (pulse) {
+          const pStart = pulseStarts[i];
+          if (!isResetPhase && t >= pStart && t <= pStart + pulseDuration) {
+            const p = (t - pStart) / pulseDuration;
+            const env = p < 0.15 ? p / 0.15 : p > 0.85 ? (1 - p) / 0.15 : 1;
+            pulse.style.opacity = String(clamp(env, 0, 1));
+            pulse.style.strokeDasharray = "0.38 1";
+            pulse.style.strokeDashoffset = String(0.38 - p * 1.05);
+          } else {
+            pulse.style.opacity = "0";
+          }
+        }
+      }
+    });
+  }
+
+  function renderSearchMotion(figure, rawSeconds) {
+    const cycle = 6.8;
+    const t = ((rawSeconds % cycle) + cycle) % cycle;
+    const fullQuery = "결제가 두 번 되는 문제";
+    const targetScores = [0.9, 0.7, 0.4];
+    const svgs = [...figure.querySelectorAll("svg")];
+    const isFadeOut = t >= 6.3;
+    const fadeFactor = isFadeOut ? clamp(1 - (t - 6.3) / 0.42, 0, 1) : 1;
+
+    let querySubstring = fullQuery;
+    if (t < 1.2) {
+      const count = clamp(Math.floor((t / 1.1) * fullQuery.length) + 1, 1, fullQuery.length);
+      querySubstring = fullQuery.slice(0, count);
+    } else if (t >= 6.74) {
+      querySubstring = "";
+    }
+
+    const scoreProgressRaw = clamp((t - 2.0) / 1.05, 0, 1);
+    const scoreProgress = 1 - Math.pow(1 - scoreProgressRaw, 3);
+    const verdictPhase = t >= 3.2;
+    const verdictOpacity = verdictPhase ? clamp((t - 3.2) / 0.45, 0, 1) : 0;
+
+    svgs.forEach(svg => {
+      const queryEl = svg.querySelector("[data-search-query]");
+      if (queryEl) {
+        if (queryEl.textContent !== querySubstring) queryEl.textContent = querySubstring;
+        queryEl.style.opacity = String(fadeFactor);
+      }
+
+      for (let i = 0; i < 3; i += 1) {
+        const line = svg.querySelector(`[data-search-line="${i}"]`);
+        const card = svg.querySelector(`[data-search-card="${i}"]`);
+        const box = svg.querySelector(`[data-search-box="${i}"]`);
+        const titleEl = svg.querySelector(`[data-search-title="${i}"]`);
+        const bar = svg.querySelector(`[data-search-bar="${i}"]`);
+        const scoreEl = svg.querySelector(`[data-search-score="${i}"]`);
+        const scoreWrap = svg.querySelector(`[data-search-score-wrap="${i}"]`);
+        const verdictEl = svg.querySelector(`[data-search-verdict="${i}"]`);
+
+        const lineStart = 1.2 + i * 0.16;
+        const lineP = t < 1.2 ? 0 : clamp((t - lineStart) / 0.38, 0, 1);
+        if (line) {
+          line.classList.remove("svg-line", "svg-line-accent", "svg-line-muted");
+          if (verdictPhase) {
+            line.classList.add(i < 2 ? "svg-line-accent" : "svg-line-muted");
+          } else {
+            line.classList.add("svg-line");
+          }
+          line.style.strokeDasharray = "1";
+          line.style.strokeDashoffset = String(1 - lineP);
+          line.style.opacity = String(lineP > 0 ? fadeFactor : 0);
+        }
+
+        const cardStart = 1.32 + i * 0.16;
+        const cardP = t < 1.32 ? 0 : clamp((t - cardStart) / 0.34, 0, 1);
+        if (card) {
+          const isExcludedFinal = verdictPhase && i === 2 && !isFadeOut && verdictOpacity >= 1;
+          card.classList.toggle("search-card--excluded", verdictPhase && i === 2);
+          if (isExcludedFinal) {
+            card.style.removeProperty("opacity");
+          } else if (verdictPhase && i === 2) {
+            const dimTarget = 1 - 0.38 * verdictOpacity;
+            card.style.opacity = String(dimTarget * fadeFactor);
+          } else {
+            card.style.opacity = String(cardP * fadeFactor);
+          }
+        }
+
+        if (box) {
+          box.classList.remove("svg-box-strong", "svg-box-accent", "svg-box-muted");
+          if (verdictPhase) {
+            box.classList.add(i < 2 ? "svg-box-accent" : "svg-box-muted");
+          } else {
+            box.classList.add("svg-box-strong");
+          }
+        }
+
+        if (titleEl) {
+          titleEl.classList.remove("svg-title", "svg-muted");
+          titleEl.classList.add(verdictPhase && i === 2 ? "svg-muted" : "svg-title");
+        }
+
+        const currentScore = t < 2.0 ? 0 : targetScores[i] * scoreProgress;
+        if (scoreEl) {
+          const formatted = currentScore.toFixed(1);
+          if (scoreEl.textContent !== formatted) scoreEl.textContent = formatted;
+        }
+
+        if (scoreWrap) {
+          scoreWrap.classList.remove("svg-accent", "svg-muted");
+          scoreWrap.classList.add(verdictPhase && i < 2 ? "svg-accent" : "svg-muted");
+        }
+
+        if (bar) {
+          const maxW = Number.parseFloat(bar.dataset.barMax || "80");
+          const width = t < 2.0 ? 0 : maxW * targetScores[i] * scoreProgress;
+          bar.setAttribute("width", width.toFixed(1));
+        }
+
+        if (verdictEl) {
+          const vStr = String(verdictOpacity);
+          verdictEl.setAttribute("fill-opacity", vStr);
+          verdictEl.style.fillOpacity = vStr;
+        }
+      }
+    });
+  }
+
+  const motionFigures = [...document.querySelectorAll(".diagram-figure[data-motion]")];
+  const motionControllers = new Map();
+
+  motionFigures.forEach(figure => {
+    const type = figure.dataset.motion;
+    const render = type === "symlink" ? renderSymlinkMotion : renderSearchMotion;
+    const endSceneTime = type === "symlink" ? 4.0 : 4.5;
+    const baseLabel = (figure.getAttribute("aria-label") || "")
+      .replace(/\s*\([^)]*\)\s*$/, "")
+      .replace(/\s*(일시정지|재개)$/, "")
+      .trim();
+    const descEl = figure.querySelector("svg desc[id]");
+    const describedBy = figure.getAttribute("aria-describedby") || (descEl ? descEl.id : "");
+    const parentItem = figure.closest(".index-item");
+
+    const controller = {
+      figure,
+      type,
+      render,
+      endSceneTime,
+      baseLabel,
+      describedBy,
+      parentItem,
+      elapsed: 0,
+      lastTimestamp: null,
+      raf: null,
+      inViewport: false,
+      userPaused: false
+    };
+
+    function updateAria() {
+      if (reducedMotion.matches) {
+        figure.removeAttribute("tabindex");
+        figure.removeAttribute("role");
+        figure.removeAttribute("aria-pressed");
+        figure.removeAttribute("aria-label");
+        figure.removeAttribute("aria-describedby");
+        figure.style.cursor = "default";
+        return;
+      }
+      figure.setAttribute("tabindex", "0");
+      figure.setAttribute("role", "button");
+      figure.setAttribute("aria-pressed", String(controller.userPaused));
+      if (controller.baseLabel) {
+        figure.setAttribute("aria-label", controller.baseLabel);
+      }
+      if (controller.describedBy) {
+        figure.setAttribute("aria-describedby", controller.describedBy);
+      }
+      figure.style.removeProperty("cursor");
+    }
+
+    function stopLoop() {
+      if (controller.raf !== null) {
+        cancelAnimationFrame(controller.raf);
+        controller.raf = null;
+      }
+      controller.lastTimestamp = null;
+    }
+
+    function tick(now) {
+      if (controller.lastTimestamp === null) {
+        controller.lastTimestamp = now;
+      }
+      const dt = Math.min((now - controller.lastTimestamp) / 1000, 0.1);
+      controller.lastTimestamp = now;
+      controller.elapsed += dt;
+      controller.render(figure, controller.elapsed);
+      controller.raf = requestAnimationFrame(tick);
+    }
+
+    function sync() {
+      updateAria();
+      if (reducedMotion.matches) {
+        stopLoop();
+        controller.render(figure, controller.endSceneTime);
+        return;
+      }
+      const isOpen = !controller.parentItem || controller.parentItem.open;
+      const shouldRun = isOpen && controller.inViewport && !controller.userPaused;
+      if (shouldRun && controller.raf === null) {
+        controller.render(figure, controller.elapsed);
+        controller.raf = requestAnimationFrame(tick);
+      } else if (!shouldRun && controller.raf !== null) {
+        stopLoop();
+      }
+    }
+
+    function togglePause() {
+      if (reducedMotion.matches) return;
+      controller.userPaused = !controller.userPaused;
+      updateAria();
+      sync();
+    }
+
+    figure.addEventListener("click", () => {
+      togglePause();
+    });
+
+    figure.addEventListener("keydown", event => {
+      if (
+        event.key === " " ||
+        event.key === "Spacebar" ||
+        event.code === "Space" ||
+        event.key === "Enter" ||
+        event.code === "Enter"
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        togglePause();
+      }
+    });
+
+    if (parentItem) {
+      parentItem.addEventListener("toggle", sync);
+    }
+
+    controller.sync = sync;
+    controller.stopLoop = stopLoop;
+    controller.updateAria = updateAria;
+    motionControllers.set(type, controller);
+    sync();
+  });
+
+  if (motionFigures.length > 0) {
+    const motionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const type = entry.target.dataset.motion;
+        const controller = motionControllers.get(type);
+        if (!controller) return;
+        controller.inViewport = entry.isIntersecting;
+        controller.sync();
+      });
+    }, { root: null, threshold: 0.15 });
+
+    motionFigures.forEach(figure => motionObserver.observe(figure));
+    reducedMotion.addEventListener("change", () => {
+      motionControllers.forEach(controller => controller.sync());
+    });
+  }
+
+  window.__setDiagramMotionTime = (type, seconds) => {
+    const controller = motionControllers.get(type);
+    if (!controller) return false;
+    controller.userPaused = true;
+    controller.updateAria();
+    controller.stopLoop();
+    controller.elapsed = seconds;
+    controller.render(controller.figure, seconds);
+    return true;
+  };
+
+  window.__getDiagramMotionState = type => {
+    const controller = motionControllers.get(type);
+    if (!controller) return null;
+    return {
+      elapsed: controller.elapsed,
+      running: controller.raf !== null,
+      inViewport: controller.inViewport,
+      userPaused: controller.userPaused,
+      role: controller.figure.getAttribute("role"),
+      tabindex: controller.figure.getAttribute("tabindex"),
+      ariaPressed: controller.figure.getAttribute("aria-pressed"),
+      ariaLabel: controller.figure.getAttribute("aria-label"),
+      ariaDescribedby: controller.figure.getAttribute("aria-describedby"),
+      cursor: getComputedStyle(controller.figure).cursor
+    };
+  };
+
   window.addEventListener("resize", refreshLayoutMeasurements);
   window.addEventListener("load", refreshLayoutMeasurements);
   window.addEventListener("hashchange", () => {
@@ -373,5 +727,9 @@
 
   window.addEventListener("beforeprint", () => {
     items.forEach(item => openImmediately(item, states.get(item)));
+    motionControllers.forEach(controller => {
+      controller.stopLoop();
+      controller.render(controller.figure, controller.endSceneTime);
+    });
   });
 })();

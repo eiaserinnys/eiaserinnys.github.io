@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>atom</title>
-  <meta name="description" content="에이전트가 MCP로 읽고 쓰며 사람이 지켜보는 지식 베이스.">
+  <meta name="description" content="에이전트가 MCP로 쓰고, 사람은 웹 대시보드에서 확인하는 지식 베이스">
   <link rel="canonical" href="https://eiaserinnys.me/products/atom/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="eiaserinnys.me">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="atom">
-  <meta property="og:description" content="에이전트가 MCP로 읽고 쓰며 사람이 지켜보는 지식 베이스.">
+  <meta property="og:description" content="에이전트가 MCP로 쓰고, 사람은 웹 대시보드에서 확인하는 지식 베이스">
   <meta property="og:url" content="https://eiaserinnys.me/products/atom/">
   <meta property="og:image" content="https://eiaserinnys.me/products/atom/images/dashboard-light.png">
   <meta property="og:image:width" content="2880">
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="atom 대시보드 화면">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="atom">
-  <meta name="twitter:description" content="에이전트가 MCP로 읽고 쓰며 사람이 지켜보는 지식 베이스.">
+  <meta name="twitter:description" content="에이전트가 MCP로 쓰고, 사람은 웹 대시보드에서 확인하는 지식 베이스">
   <meta name="twitter:image" content="https://eiaserinnys.me/products/atom/images/dashboard-light.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,8 @@
         <h1>
           <span>atom</span>
         </h1>
-        <p class="lede">에이전트가 MCP로 쓰고, 사람은 웹&nbsp;대시보드에서 확인하는 지식&nbsp;베이스다.</p>
+        <p class="lede">에이전트가 MCP로 쓰고, 사람은 웹&nbsp;대시보드에서 확인하는 지식&nbsp;베이스</p>
+        <p class="summary-stat-note">제텔카스텐에서 착안한 카드, 한&nbsp;장에 생각&nbsp;하나</p>
       </div>
       <div class="hero-actions">
         <a class="action-link action-link--primary" href="https://github.com/eiaserinnys/atom">GitHub</a>
@@ -60,7 +61,7 @@
               <span class="summary-number">01</span>
               <span class="summary-title">대시보드</span>
             </span>
-            <span class="summary-claim">사람은 트리와 문서, 카드를 나란히 놓고 에이전트가 고친 내용을 본다.</span>
+            <span class="summary-claim">트리와 문서, 카드 세&nbsp;칸에서 에이전트가 고친 내용을 확인하는&nbsp;화면</span>
             <span class="summary-metric">
               <span class="summary-metric-value">실시간</span>
               <span class="summary-metric-label">변경&nbsp;반영</span>
@@ -85,7 +86,7 @@
               <span class="summary-number">02</span>
               <span class="summary-title">심링크</span>
             </span>
-            <span class="summary-claim">카드 하나를 트리 여러&nbsp;곳에 두고, 한&nbsp;번 고치면 모든&nbsp;곳에 반영된다.</span>
+            <span class="summary-claim">카드 한&nbsp;장을 여러&nbsp;폴더에 연결해, 한&nbsp;번&nbsp;고치면 모든&nbsp;폴더에 반영되는 바로가기</span>
             <span class="summary-metric">
               <span class="summary-metric-value">1 → N</span>
               <span class="summary-metric-label">원본 → 위치</span>
@@ -93,54 +94,67 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <figure class="diagram-figure">
-                <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 216" role="img" aria-labelledby="atom-symlink-title-d atom-symlink-desc-d">
+              <figure class="diagram-figure diagram-figure--motion" data-motion="symlink" role="button" tabindex="0" aria-pressed="false" aria-label="심링크 반영 장면 애니메이션" aria-describedby="atom-symlink-desc-d">
+                <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 268" role="img" aria-labelledby="atom-symlink-title-d atom-symlink-desc-d">
                   <title id="atom-symlink-title-d">원본 카드 하나와 트리 세 곳의 연결 구조</title>
-                  <desc id="atom-symlink-desc-d">결제는 멱등 키로 재시도한다 원본 카드가 설계 결정의 원래 자리와 운영 인시던트, 레퍼런스의 심링크 자리에 연결된다.</desc>
-                  <rect class="svg-box-strong" x="1" y="64" width="296" height="88"></rect>
-                  <text class="svg-muted" x="20" y="96">원본 카드</text>
-                  <text class="svg-title" x="20" y="126">결제는 멱등 키로 재시도한다</text>
+                  <desc id="atom-symlink-desc-d">원본 카드의 키 보관 시간을 24시간에서 48시간으로 고치면 연결된 설계 결정, 운영 인시던트, 레퍼런스 세 곳도 함께 48시간으로 바뀐다.</desc>
+                  <rect class="svg-box-strong" data-symlink-box="source" x="1" y="84" width="296" height="100"></rect>
+                  <text class="svg-muted" x="20" y="110">원본 카드</text>
+                  <text class="svg-title" x="20" y="138">결제는 멱등 키로 재시도한다</text>
+                  <text class="svg-muted" data-symlink-line="source" x="20" y="164">키 보관 <tspan class="symlink-value--active" data-symlink-val="source"><tspan class="svg-mono" data-symlink-num="source">48</tspan>시간</tspan></text>
 
-                  <path class="svg-line" d="M297 108 H368 V38 H420"></path>
-                  <path class="svg-line-accent" d="M297 108 H420"></path>
-                  <path class="svg-line-accent" d="M297 108 H368 V178 H420"></path>
+                  <path class="svg-line" d="M297 134 H368 V42 H420"></path>
+                  <path class="svg-line-accent" d="M297 134 H420"></path>
+                  <path class="svg-line-accent" d="M297 134 H368 V226 H420"></path>
+                  <path class="svg-line-pulse" data-symlink-pulse="0" pathLength="1" d="M297 134 H368 V42 H420"></path>
+                  <path class="svg-line-pulse" data-symlink-pulse="1" pathLength="1" d="M297 134 H420"></path>
+                  <path class="svg-line-pulse" data-symlink-pulse="2" pathLength="1" d="M297 134 H368 V226 H420"></path>
 
-                  <rect class="svg-box-strong" x="420" y="8" width="427" height="60"></rect>
-                  <text class="svg-muted" x="438" y="31">원래 자리</text>
-                  <text class="svg-title" x="438" y="54">설계 결정</text>
+                  <rect class="svg-box-strong" data-symlink-box="0" x="420" y="2" width="427" height="80"></rect>
+                  <text class="svg-muted" x="438" y="25">원래 자리</text>
+                  <text class="svg-title" x="438" y="49">설계 결정</text>
+                  <text class="svg-muted" data-symlink-line="0" x="438" y="71">키 보관 <tspan class="symlink-value--active" data-symlink-val="0"><tspan class="svg-mono" data-symlink-num="0">48</tspan>시간</tspan></text>
 
-                  <rect class="svg-box-accent" x="420" y="78" width="427" height="60"></rect>
-                  <text class="svg-accent" x="438" y="101">심링크</text>
-                  <text class="svg-title" x="438" y="124">운영 인시던트</text>
+                  <rect class="svg-box-accent" data-symlink-box="1" x="420" y="94" width="427" height="80"></rect>
+                  <text class="svg-accent" x="438" y="117">심링크</text>
+                  <text class="svg-title" x="438" y="141">운영 인시던트</text>
+                  <text class="svg-muted" data-symlink-line="1" x="438" y="163">키 보관 <tspan class="symlink-value--active" data-symlink-val="1"><tspan class="svg-mono" data-symlink-num="1">48</tspan>시간</tspan></text>
 
-                  <rect class="svg-box-accent" x="420" y="148" width="427" height="60"></rect>
-                  <text class="svg-accent" x="438" y="171">심링크</text>
-                  <text class="svg-title" x="438" y="194">레퍼런스</text>
+                  <rect class="svg-box-accent" data-symlink-box="2" x="420" y="186" width="427" height="80"></rect>
+                  <text class="svg-accent" x="438" y="209">심링크</text>
+                  <text class="svg-title" x="438" y="233">레퍼런스</text>
+                  <text class="svg-muted" data-symlink-line="2" x="438" y="255">키 보관 <tspan class="symlink-value--active" data-symlink-val="2"><tspan class="svg-mono" data-symlink-num="2">48</tspan>시간</tspan></text>
                 </svg>
 
-                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 304" role="img" aria-labelledby="atom-symlink-title-m atom-symlink-desc-m">
+                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 388" role="img" aria-labelledby="atom-symlink-title-m atom-symlink-desc-m">
                   <title id="atom-symlink-title-m">원본 카드 하나와 트리 세 곳의 연결 구조</title>
-                  <desc id="atom-symlink-desc-m">결제는 멱등 키로 재시도한다 원본 카드가 설계 결정의 원래 자리와 운영 인시던트, 레퍼런스의 심링크 자리에 연결된다.</desc>
-                  <rect class="svg-box-strong" x="1" y="1" width="318" height="68"></rect>
-                  <text class="svg-muted" x="16" y="27">원본 카드</text>
-                  <text class="svg-title" x="16" y="53">결제는 멱등 키로 재시도한다</text>
+                  <desc id="atom-symlink-desc-m">원본 카드의 키 보관 시간을 24시간에서 48시간으로 고치면 연결된 설계 결정, 운영 인시던트, 레퍼런스 세 곳도 함께 48시간으로 바뀐다.</desc>
+                  <rect class="svg-box-strong" data-symlink-box="source" x="1" y="1" width="318" height="86"></rect>
+                  <text class="svg-muted" x="16" y="25">원본 카드</text>
+                  <text class="svg-title" x="16" y="50">결제는 멱등 키로 재시도한다</text>
+                  <text class="svg-muted" data-symlink-line="source" x="16" y="74">키 보관 <tspan class="symlink-value--active" data-symlink-val="source"><tspan class="svg-mono" data-symlink-num="source">48</tspan>시간</tspan></text>
 
-                  <path class="svg-line-accent" d="M20 69 V270"></path>
-                  <path class="svg-line" d="M20 116 H40"></path>
-                  <path class="svg-line-accent" d="M20 193 H40"></path>
-                  <path class="svg-line-accent" d="M20 270 H40"></path>
+                  <path class="svg-line-accent" d="M20 87 V341 H40"></path>
+                  <path class="svg-line-accent" d="M20 87 V243 H40"></path>
+                  <path class="svg-line" d="M20 87 V145 H40"></path>
+                  <path class="svg-line-pulse" data-symlink-pulse="0" pathLength="1" d="M20 87 V145 H40"></path>
+                  <path class="svg-line-pulse" data-symlink-pulse="1" pathLength="1" d="M20 87 V243 H40"></path>
+                  <path class="svg-line-pulse" data-symlink-pulse="2" pathLength="1" d="M20 87 V341 H40"></path>
 
-                  <rect class="svg-box-strong" x="40" y="84" width="279" height="64"></rect>
-                  <text class="svg-muted" x="56" y="109">원래 자리</text>
-                  <text class="svg-title" x="56" y="134">설계 결정</text>
+                  <rect class="svg-box-strong" data-symlink-box="0" x="40" y="103" width="279" height="84"></rect>
+                  <text class="svg-muted" x="56" y="126">원래 자리</text>
+                  <text class="svg-title" x="56" y="150">설계 결정</text>
+                  <text class="svg-muted" data-symlink-line="0" x="56" y="173">키 보관 <tspan class="symlink-value--active" data-symlink-val="0"><tspan class="svg-mono" data-symlink-num="0">48</tspan>시간</tspan></text>
 
-                  <rect class="svg-box-accent" x="40" y="161" width="279" height="64"></rect>
-                  <text class="svg-accent" x="56" y="186">심링크</text>
-                  <text class="svg-title" x="56" y="211">운영 인시던트</text>
+                  <rect class="svg-box-accent" data-symlink-box="1" x="40" y="201" width="279" height="84"></rect>
+                  <text class="svg-accent" x="56" y="224">심링크</text>
+                  <text class="svg-title" x="56" y="248">운영 인시던트</text>
+                  <text class="svg-muted" data-symlink-line="1" x="56" y="271">키 보관 <tspan class="symlink-value--active" data-symlink-val="1"><tspan class="svg-mono" data-symlink-num="1">48</tspan>시간</tspan></text>
 
-                  <rect class="svg-box-accent" x="40" y="238" width="279" height="64"></rect>
-                  <text class="svg-accent" x="56" y="263">심링크</text>
-                  <text class="svg-title" x="56" y="288">레퍼런스</text>
+                  <rect class="svg-box-accent" data-symlink-box="2" x="40" y="299" width="279" height="84"></rect>
+                  <text class="svg-accent" x="56" y="322">심링크</text>
+                  <text class="svg-title" x="56" y="346">레퍼런스</text>
+                  <text class="svg-muted" data-symlink-line="2" x="56" y="369">키 보관 <tspan class="symlink-value--active" data-symlink-val="2"><tspan class="svg-mono" data-symlink-num="2">48</tspan>시간</tspan></text>
                 </svg>
               </figure>
             </div>
@@ -154,7 +168,7 @@
               <span class="summary-number">03</span>
               <span class="summary-title">서브트리 컴파일</span>
             </span>
-            <span class="summary-claim">하위&nbsp;트리를 원하는 깊이까지 엮어 문서 한&nbsp;편으로 에이전트에게 준다.</span>
+            <span class="summary-claim">하위&nbsp;트리를 원하는 깊이까지 엮어 에이전트에게 전달하는 마크다운&nbsp;문서 한&nbsp;편</span>
             <span class="summary-metric">
               <span class="summary-metric-value">1<span class="unit">회</span></span>
               <span class="summary-metric-label">도구&nbsp;호출</span>
@@ -288,7 +302,7 @@
               <span class="summary-number">04</span>
               <span class="summary-title">MCP</span>
             </span>
-            <span class="summary-claim">에이전트는 카드와 트리를 MCP로 직접 다루고, 여러 변경은 batch_op 한&nbsp;번으로 묶는다.</span>
+            <span class="summary-claim">에이전트가 직접 만들고 고치는 카드와&nbsp;트리, 여러&nbsp;변경은 batch_op 한&nbsp;번에</span>
             <span class="summary-metric">
               <span class="summary-metric-value">15</span>
               <span class="summary-metric-label">도구</span>
@@ -372,7 +386,7 @@
               <span class="summary-number">05</span>
               <span class="summary-title">검색</span>
             </span>
-            <span class="summary-claim">본문 전체를 찾되, 검색&nbsp;범위를 하위&nbsp;트리 하나로 한정할&nbsp;수&nbsp;있다.</span>
+            <span class="summary-claim">카드 본문 전체를 대상으로, 범위를 하위&nbsp;트리 하나로 한정할&nbsp;수&nbsp;있는 검색</span>
             <span class="summary-metric">
               <span class="summary-metric-value">BM25</span>
               <span class="summary-metric-label">순위&nbsp;방식</span>
@@ -380,63 +394,85 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <figure class="diagram-figure">
+              <figure class="diagram-figure diagram-figure--motion" data-motion="search" role="button" tabindex="0" aria-pressed="false" aria-label="검색 판정 장면 애니메이션" aria-describedby="atom-search-desc-d">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 216" role="img" aria-labelledby="atom-search-title-d atom-search-desc-d">
                   <title id="atom-search-title-d">질의에서 후보 카드 판정과 선정 과정</title>
-                  <desc id="atom-search-desc-d">결제가 두 번 되는 문제 질의에서 후보 카드 세 장의 점수를 매겨 결제는 멱등 키로 재시도한다(0.9)와 결제 웹훅 중복 수신(0.7)을 선정한다.</desc>
+                  <desc id="atom-search-desc-d">결제가 두 번 되는 문제 질의에서 후보 카드 세 장의 점수를 매겨 0.9와 0.7 카드를 선정하고 0.4 카드는 제외한다.</desc>
                   <rect class="svg-box-strong" x="1" y="54" width="296" height="108"></rect>
                   <text class="svg-muted" x="20" y="84">질의 (브루라인 주문 앱)</text>
-                  <text class="svg-title" x="20" y="114">결제가 두 번 되는 문제</text>
+                  <text class="svg-title" data-search-query x="20" y="114">결제가 두 번 되는 문제</text>
                   <text class="svg-muted" x="20" y="142"><tspan class="svg-mono">BM25</tspan> 후보 → 언어 모델 판정(선택)</text>
 
-                  <path class="svg-line-accent" d="M297 108 H362 V38 H408"></path>
-                  <path class="svg-line-accent" d="M297 108 H408"></path>
-                  <path class="svg-line-muted" d="M297 108 H362 V178 H408"></path>
+                  <path class="svg-line-accent" data-search-line="0" data-line-final="svg-line-accent" pathLength="1" d="M297 108 H362 V38 H408"></path>
+                  <path class="svg-line-accent" data-search-line="1" data-line-final="svg-line-accent" pathLength="1" d="M297 108 H408"></path>
+                  <path class="svg-line-muted" data-search-line="2" data-line-final="svg-line-muted" pathLength="1" d="M297 108 H362 V178 H408"></path>
 
-                  <rect class="svg-box-accent" x="408" y="8" width="439" height="60"></rect>
-                  <text class="svg-title" x="426" y="34">결제는 멱등 키로 재시도한다</text>
-                  <text class="svg-muted" x="426" y="56">설계 결정</text>
-                  <text class="svg-accent" x="828" y="56" text-anchor="end"><tspan class="svg-mono">0.9</tspan> 선정</text>
+                  <g data-search-card="0">
+                    <rect class="svg-box-accent" data-search-box="0" data-box-final="svg-box-accent" x="408" y="8" width="439" height="60"></rect>
+                    <text class="svg-title" data-search-title="0" data-title-final="svg-title" x="426" y="34">결제는 멱등 키로 재시도한다</text>
+                    <text class="svg-muted" x="426" y="56">설계 결정</text>
+                    <rect class="svg-bar-track" x="680" y="50" width="80" height="4"></rect>
+                    <rect class="svg-bar-fill" data-search-bar="0" data-bar-max="80" data-score-target="0.9" x="680" y="50" width="72" height="4"></rect>
+                    <text class="svg-accent" data-search-score-wrap="0" data-score-final="svg-accent" x="828" y="56" text-anchor="end"><tspan class="svg-mono" data-search-score="0" data-score-target="0.9">0.9</tspan><tspan data-search-verdict="0"> 선정</tspan></text>
+                  </g>
 
-                  <rect class="svg-box-accent" x="408" y="78" width="439" height="60"></rect>
-                  <text class="svg-title" x="426" y="104">결제 웹훅 중복 수신</text>
-                  <text class="svg-muted" x="426" y="126">운영 인시던트</text>
-                  <text class="svg-accent" x="828" y="126" text-anchor="end"><tspan class="svg-mono">0.7</tspan> 선정</text>
+                  <g data-search-card="1">
+                    <rect class="svg-box-accent" data-search-box="1" data-box-final="svg-box-accent" x="408" y="78" width="439" height="60"></rect>
+                    <text class="svg-title" data-search-title="1" data-title-final="svg-title" x="426" y="104">결제 웹훅 중복 수신</text>
+                    <text class="svg-muted" x="426" y="126">운영 인시던트</text>
+                    <rect class="svg-bar-track" x="680" y="120" width="80" height="4"></rect>
+                    <rect class="svg-bar-fill" data-search-bar="1" data-bar-max="80" data-score-target="0.7" x="680" y="120" width="56" height="4"></rect>
+                    <text class="svg-accent" data-search-score-wrap="1" data-score-final="svg-accent" x="828" y="126" text-anchor="end"><tspan class="svg-mono" data-search-score="1" data-score-target="0.7">0.7</tspan><tspan data-search-verdict="1"> 선정</tspan></text>
+                  </g>
 
-                  <rect class="svg-box-muted" x="408" y="148" width="439" height="60"></rect>
-                  <text class="svg-muted" x="426" y="174">PG사 결제 API 요약</text>
-                  <text class="svg-muted" x="426" y="196">레퍼런스</text>
-                  <text class="svg-muted" x="828" y="196" text-anchor="end"><tspan class="svg-mono">0.4</tspan> 제외</text>
+                  <g class="search-card--excluded" data-search-card="2">
+                    <rect class="svg-box-muted" data-search-box="2" data-box-final="svg-box-muted" x="408" y="148" width="439" height="60"></rect>
+                    <text class="svg-muted" data-search-title="2" data-title-final="svg-muted" x="426" y="174">PG사 결제 API 요약</text>
+                    <text class="svg-muted" x="426" y="196">레퍼런스</text>
+                    <rect class="svg-bar-track" x="680" y="190" width="80" height="4"></rect>
+                    <rect class="svg-bar-fill" data-search-bar="2" data-bar-max="80" data-score-target="0.4" x="680" y="190" width="32" height="4"></rect>
+                    <text class="svg-muted" data-search-score-wrap="2" data-score-final="svg-muted" x="828" y="196" text-anchor="end"><tspan class="svg-mono" data-search-score="2" data-score-target="0.4">0.4</tspan><tspan data-search-verdict="2"> 제외</tspan></text>
+                  </g>
                 </svg>
 
                 <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 328" role="img" aria-labelledby="atom-search-title-m atom-search-desc-m">
                   <title id="atom-search-title-m">질의에서 후보 카드 판정과 선정 과정</title>
-                  <desc id="atom-search-desc-m">결제가 두 번 되는 문제 질의에서 후보 카드 세 장의 점수를 매겨 결제는 멱등 키로 재시도한다(0.9)와 결제 웹훅 중복 수신(0.7)을 선정한다.</desc>
+                  <desc id="atom-search-desc-m">결제가 두 번 되는 문제 질의에서 후보 카드 세 장의 점수를 매겨 0.9와 0.7 카드를 선정하고 0.4 카드는 제외한다.</desc>
                   <rect class="svg-box-strong" x="1" y="1" width="318" height="86"></rect>
                   <text class="svg-muted" x="16" y="27">질의 (브루라인 주문 앱)</text>
-                  <text class="svg-title" x="16" y="52">결제가 두 번 되는 문제</text>
+                  <text class="svg-title" data-search-query x="16" y="52">결제가 두 번 되는 문제</text>
                   <text class="svg-muted" x="16" y="75"><tspan class="svg-mono">BM25</tspan> 후보 → 언어 모델 판정(선택)</text>
 
-                  <path class="svg-line-accent" d="M18 87 V214"></path>
-                  <path class="svg-line-muted" d="M18 214 V292"></path>
-                  <path class="svg-line-accent" d="M18 136 H36"></path>
-                  <path class="svg-line-accent" d="M18 214 H36"></path>
-                  <path class="svg-line-muted" d="M18 292 H36"></path>
+                  <path class="svg-line-muted" data-search-line="2" data-line-final="svg-line-muted" pathLength="1" d="M18 87 V292 H36"></path>
+                  <path class="svg-line-accent" data-search-line="1" data-line-final="svg-line-accent" pathLength="1" d="M18 87 V214 H36"></path>
+                  <path class="svg-line-accent" data-search-line="0" data-line-final="svg-line-accent" pathLength="1" d="M18 87 V136 H36"></path>
 
-                  <rect class="svg-box-accent" x="36" y="104" width="283" height="64"></rect>
-                  <text class="svg-title" x="50" y="130">결제는 멱등 키로 재시도한다</text>
-                  <text class="svg-muted" x="50" y="154">설계 결정</text>
-                  <text class="svg-accent" x="305" y="154" text-anchor="end"><tspan class="svg-mono">0.9</tspan> 선정</text>
+                  <g data-search-card="0">
+                    <rect class="svg-box-accent" data-search-box="0" data-box-final="svg-box-accent" x="36" y="104" width="283" height="64"></rect>
+                    <text class="svg-title" data-search-title="0" data-title-final="svg-title" x="50" y="130">결제는 멱등 키로 재시도한다</text>
+                    <text class="svg-muted" x="50" y="154">설계 결정</text>
+                    <rect class="svg-bar-track" x="176" y="148" width="56" height="4"></rect>
+                    <rect class="svg-bar-fill" data-search-bar="0" data-bar-max="56" data-score-target="0.9" x="176" y="148" width="50.4" height="4"></rect>
+                    <text class="svg-accent" data-search-score-wrap="0" data-score-final="svg-accent" x="305" y="154" text-anchor="end"><tspan class="svg-mono" data-search-score="0" data-score-target="0.9">0.9</tspan><tspan data-search-verdict="0"> 선정</tspan></text>
+                  </g>
 
-                  <rect class="svg-box-accent" x="36" y="182" width="283" height="64"></rect>
-                  <text class="svg-title" x="50" y="208">결제 웹훅 중복 수신</text>
-                  <text class="svg-muted" x="50" y="232">운영 인시던트</text>
-                  <text class="svg-accent" x="305" y="232" text-anchor="end"><tspan class="svg-mono">0.7</tspan> 선정</text>
+                  <g data-search-card="1">
+                    <rect class="svg-box-accent" data-search-box="1" data-box-final="svg-box-accent" x="36" y="182" width="283" height="64"></rect>
+                    <text class="svg-title" data-search-title="1" data-title-final="svg-title" x="50" y="208">결제 웹훅 중복 수신</text>
+                    <text class="svg-muted" x="50" y="232">운영 인시던트</text>
+                    <rect class="svg-bar-track" x="176" y="226" width="56" height="4"></rect>
+                    <rect class="svg-bar-fill" data-search-bar="1" data-bar-max="56" data-score-target="0.7" x="176" y="226" width="39.2" height="4"></rect>
+                    <text class="svg-accent" data-search-score-wrap="1" data-score-final="svg-accent" x="305" y="232" text-anchor="end"><tspan class="svg-mono" data-search-score="1" data-score-target="0.7">0.7</tspan><tspan data-search-verdict="1"> 선정</tspan></text>
+                  </g>
 
-                  <rect class="svg-box-muted" x="36" y="260" width="283" height="64"></rect>
-                  <text class="svg-muted" x="50" y="286">PG사 결제 API 요약</text>
-                  <text class="svg-muted" x="50" y="310">레퍼런스</text>
-                  <text class="svg-muted" x="305" y="310" text-anchor="end"><tspan class="svg-mono">0.4</tspan> 제외</text>
+                  <g class="search-card--excluded" data-search-card="2">
+                    <rect class="svg-box-muted" data-search-box="2" data-box-final="svg-box-muted" x="36" y="260" width="283" height="64"></rect>
+                    <text class="svg-muted" data-search-title="2" data-title-final="svg-muted" x="50" y="286">PG사 결제 API 요약</text>
+                    <text class="svg-muted" x="50" y="310">레퍼런스</text>
+                    <rect class="svg-bar-track" x="176" y="304" width="56" height="4"></rect>
+                    <rect class="svg-bar-fill" data-search-bar="2" data-bar-max="56" data-score-target="0.4" x="176" y="304" width="22.4" height="4"></rect>
+                    <text class="svg-muted" data-search-score-wrap="2" data-score-final="svg-muted" x="305" y="310" text-anchor="end"><tspan class="svg-mono" data-search-score="2" data-score-target="0.4">0.4</tspan><tspan data-search-verdict="2"> 제외</tspan></text>
+                  </g>
                 </svg>
               </figure>
             </div>
@@ -450,7 +486,7 @@
               <span class="summary-number">06</span>
               <span class="summary-title">설치</span>
             </span>
-            <span class="summary-claim">처음엔 DB&nbsp;서버 없이 띄우고, 운영&nbsp;서버에서는 PostgreSQL로 옮긴다.</span>
+            <span class="summary-claim">처음엔 DB&nbsp;서버 없이 실행하고, 운영에서는 PostgreSQL로 전환하는 저장소&nbsp;구성</span>
             <span class="summary-metric">
               <span class="summary-metric-value">1</span>
               <span class="summary-metric-label">SQLite&nbsp;파일</span>
