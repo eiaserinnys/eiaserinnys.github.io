@@ -54,6 +54,21 @@
 
     <main id="main">
       <section class="index-list" aria-label="atom 핵심 구조">
+        <details class="index-item" id="s0" open>
+          <span class="stuck-sentinel" aria-hidden="true"></span>
+          <summary class="index-summary" id="summary-s0">
+            <span class="summary-meta">
+              <span class="summary-number">00</span>
+              <span class="summary-title">개요</span>
+            </span>
+          </summary>
+          <div class="detail-panel">
+            <div class="detail-content">
+              <p>AI&nbsp;에이전트가 읽고 쓰는 트리&nbsp;모양 지식&nbsp;베이스다. 에이전트는 MCP&nbsp;도구 17개나 REST&nbsp;API로 트리를 읽고 고친다. 사람은 같은&nbsp;트리를 웹&nbsp;대시보드에서 보고 고친다.</p>
+            </div>
+          </div>
+        </details>
+
         <details class="index-item" id="s1" open>
           <span class="stuck-sentinel" aria-hidden="true"></span>
           <summary class="index-summary" id="summary-s1">
@@ -69,6 +84,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
+              <p>왼쪽 트리, 가운데 컴파일된 문서, 오른쪽 카드&nbsp;상세의 세&nbsp;칸으로 구성되며, 에이전트나 사람이 카드와&nbsp;트리를 바꾸면 서버가 SSE(<code>GET /events</code>)로 알리고 열려&nbsp;있는 칸이 바로 새&nbsp;내용으로 바뀐다.</p>
               <a class="capture-frame capture-theme--light" href="./images/dashboard-light.png" aria-label="atom 대시보드 원본 크기로 보기">
                 <img src="./images/dashboard-light.png" width="2880" height="1800" alt="atom 대시보드 라이트 화면: 왼쪽 트리, 가운데 서브트리 컴파일 문서, 오른쪽 카드 상세">
               </a>
@@ -94,6 +110,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
+              <p>카드 하나가 여러&nbsp;부모 아래 나타날&nbsp;수&nbsp;있다. 한&nbsp;자리는 원래&nbsp;자리이고, 나머지는 같은&nbsp;카드를 가리키는 심링크&nbsp;노드다.</p>
               <figure class="diagram-figure diagram-figure--motion" data-motion="symlink" role="button" tabindex="0" aria-pressed="false" aria-label="심링크 반영 장면 애니메이션" aria-describedby="atom-symlink-desc-d">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 268" role="img" aria-labelledby="atom-symlink-title-d atom-symlink-desc-d">
                   <title id="atom-symlink-title-d">원본 카드 하나와 트리 세 곳의 연결 구조</title>
@@ -176,6 +193,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
+              <p><code>compile_subtree</code>는 아무&nbsp;노드에서 시작해 그&nbsp;아래 가지를 마크다운&nbsp;문서 한&nbsp;편으로 만든다. 제목&nbsp;단계(<code>#</code>부터 <code>######</code>)가 트리&nbsp;깊이를 따르며, 깊이 기본값은 3이다.</p>
               <figure class="diagram-figure" data-compile-depth="2">
                 <div class="depth-toolbar" role="group" aria-label="서브트리 컴파일 깊이 선택">
                   <span class="depth-toolbar-label">compile_subtree</span>
@@ -304,16 +322,17 @@
             </span>
             <span class="summary-claim">에이전트가 직접 만들고 고치는 카드와&nbsp;트리, 여러&nbsp;변경은 batch_op 한&nbsp;번에</span>
             <span class="summary-metric">
-              <span class="summary-metric-value">15</span>
+              <span class="summary-metric-value">17</span>
               <span class="summary-metric-label">도구</span>
             </span>
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
+              <p>연결&nbsp;방법은 HTTP(<code>POST /mcp</code>, API&nbsp;키 헤더)와 같은&nbsp;컴퓨터의 stdio 두&nbsp;가지다. API&nbsp;키는 읽기와 쓰기 두&nbsp;범위가 있으며, 읽기&nbsp;키에는 조회&nbsp;도구만 보인다.</p>
               <figure class="diagram-figure">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 256" role="img" aria-labelledby="atom-tools-title-d atom-tools-desc-d">
-                  <title id="atom-tools-title-d">atom MCP 도구 15개 네 묶음 구성</title>
-                  <desc id="atom-tools-desc-d">카드 5개, 트리 8개, 검색 1개, 묶음 1개(batch_op)의 네 묶음으로 이루어진다.</desc>
+                  <title id="atom-tools-title-d">atom MCP 도구 17개 네 묶음 구성</title>
+                  <desc id="atom-tools-desc-d">카드 5개, 트리 8개, 검색과 평가 3개, 묶음 1개(batch_op)의 네 묶음으로 이루어진다.</desc>
 
                   <rect class="svg-box-strong" x="1" y="1" width="200" height="254"></rect>
                   <text class="svg-title" x="18" y="32">카드 <tspan class="svg-mono">5</tspan></text>
@@ -335,17 +354,19 @@
                   <text class="svg-mono" x="233" y="237">delete_node</text>
 
                   <rect class="svg-box-strong" x="431" y="1" width="200" height="254"></rect>
-                  <text class="svg-title" x="448" y="32">검색 <tspan class="svg-mono">1</tspan></text>
+                  <text class="svg-title" x="448" y="32">검색과 평가 <tspan class="svg-mono">3</tspan></text>
                   <text class="svg-mono" x="448" y="62">search_cards</text>
+                  <text class="svg-mono" x="448" y="87">get_card_neighbors</text>
+                  <text class="svg-mono" x="448" y="112">evaluate_cards</text>
 
                   <rect class="svg-box-accent" x="646" y="1" width="200" height="254"></rect>
                   <text class="svg-title" x="663" y="32">묶음 <tspan class="svg-mono">1</tspan></text>
                   <text class="svg-mono svg-accent" x="663" y="62">batch_op</text>
                 </svg>
 
-                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 430" role="img" aria-labelledby="atom-tools-title-m atom-tools-desc-m">
-                  <title id="atom-tools-title-m">atom MCP 도구 15개 네 묶음 구성</title>
-                  <desc id="atom-tools-desc-m">카드 5개, 트리 8개, 검색 1개, 묶음 1개(batch_op)의 네 묶음으로 이루어진다.</desc>
+                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 478" role="img" aria-labelledby="atom-tools-title-m atom-tools-desc-m">
+                  <title id="atom-tools-title-m">atom MCP 도구 17개 네 묶음 구성</title>
+                  <desc id="atom-tools-desc-m">카드 5개, 트리 8개, 검색과 평가 3개, 묶음 1개(batch_op)의 네 묶음으로 이루어진다.</desc>
 
                   <rect class="svg-box-strong" x="1" y="1" width="318" height="116"></rect>
                   <text class="svg-title" x="16" y="28">카드 <tspan class="svg-mono">5</tspan></text>
@@ -366,13 +387,15 @@
                   <text class="svg-mono" x="16" y="254">update_node</text>
                   <text class="svg-mono" x="164" y="254">delete_node</text>
 
-                  <rect class="svg-box-strong" x="1" y="281" width="318" height="68"></rect>
-                  <text class="svg-title" x="16" y="308">검색 <tspan class="svg-mono">1</tspan></text>
+                  <rect class="svg-box-strong" x="1" y="281" width="318" height="116"></rect>
+                  <text class="svg-title" x="16" y="308">검색과 평가 <tspan class="svg-mono">3</tspan></text>
                   <text class="svg-mono" x="16" y="334">search_cards</text>
+                  <text class="svg-mono" x="16" y="358">get_card_neighbors</text>
+                  <text class="svg-mono" x="16" y="382">evaluate_cards</text>
 
-                  <rect class="svg-box-accent" x="1" y="361" width="318" height="68"></rect>
-                  <text class="svg-title" x="16" y="388">묶음 <tspan class="svg-mono">1</tspan></text>
-                  <text class="svg-mono svg-accent" x="16" y="414">batch_op</text>
+                  <rect class="svg-box-accent" x="1" y="409" width="318" height="68"></rect>
+                  <text class="svg-title" x="16" y="436">묶음 <tspan class="svg-mono">1</tspan></text>
+                  <text class="svg-mono svg-accent" x="16" y="462">batch_op</text>
                 </svg>
               </figure>
             </div>
@@ -394,6 +417,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
+              <p><code>search_cards</code>는 카드&nbsp;제목과 본문을 전문&nbsp;검색해 관련도&nbsp;순으로 돌려준다(SQLite는 FTS5, PostgreSQL은 내장 전문&nbsp;검색). 기본&nbsp;20건이다.</p>
               <figure class="diagram-figure diagram-figure--motion" data-motion="search" role="button" tabindex="0" aria-pressed="false" aria-label="검색 판정 장면 애니메이션" aria-describedby="atom-search-desc-d">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 216" role="img" aria-labelledby="atom-search-title-d atom-search-desc-d">
                   <title id="atom-search-title-d">질의에서 후보 카드 판정과 선정 과정</title>
@@ -494,6 +518,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
+              <p>기본&nbsp;저장소는 SQLite&nbsp;파일이라 DB&nbsp;서버나 로그인&nbsp;설정 없이 서버와 대시보드를 내&nbsp;컴퓨터에서 바로 띄울&nbsp;수&nbsp;있다. 합성 데모&nbsp;데이터를 넣는 스크립트가 있다.</p>
               <div class="summary-stats" aria-label="저장소 구성 방식">
                 <div class="summary-stat">
                   <span class="summary-stat-label">로컬과 단일&nbsp;서버</span>
