@@ -64,7 +64,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <p>atom은 AI&nbsp;에이전트가 지식을 트리 구조로 기록하고 읽는 MIT 라이선스 오픈소스 지식&nbsp;베이스입니다. 각 카드는 50자 이내의 제목과 마크다운 본문, 태그, 다른 카드 참조를 포함하며, 섹션 제목 역할을 하는 구조&nbsp;카드와 메모를 적는 지식&nbsp;카드로 구분됩니다. 카드의 내용과 트리 노드의 계층을 분리해 저장하므로 같은 카드를 여러 상위 노드에 연결할 수 있고, 에이전트는 필요한 하위 트리를 마크다운 문서 한 편으로 엮어 읽습니다. 에이전트가 17개 MCP 도구나 REST API로 읽고 수정하는 트리를 사람도 웹&nbsp;대시보드에서 함께 확인하고 편집합니다.</p>
+              <p>atom은 AI&nbsp;에이전트가 지식을 트리 구조로 기록하고 읽는 MIT 라이선스 오픈소스 지식&nbsp;베이스입니다. 각 카드는 50자 이내의 제목과 마크다운 본문, 태그, 다른 카드 참조를 포함하며, 섹션 제목 역할을 하는 구조&nbsp;카드와 메모를 적는 지식&nbsp;카드로 구분됩니다. 카드의 내용과 트리 노드의 계층을 분리해 저장하므로 같은 카드를 여러 상위 노드에 연결할 수 있고, 에이전트는 필요한 하위 트리를 마크다운 문서 한&nbsp;편으로 엮어 읽습니다. 에이전트가 17개 MCP 도구나 REST API로 읽고 수정하는 트리를 사람도 웹&nbsp;대시보드에서 함께 확인하고 편집합니다.</p>
             </div>
           </div>
         </details>
@@ -110,7 +110,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <p>카드 한 장을 여러 상위 노드에 연결할 때 원래 노드를 제외한 나머지는 같은 카드를 참조하는 심링크&nbsp;노드로 생성됩니다. 그림처럼 결제 재시도 카드의 키 보관 시간을 48시간으로 수정하면, 에이전트와 사람은 설계 결정과 운영 인시던트, 레퍼런스 세 폴더에서 모두 바뀐 본문을 확인합니다. 심링크&nbsp;노드는 서브트리를 컴파일할 때 원래 노드의 하위 항목까지 포함하되 같은 카드가 경로에 반복되면 순환으로 표시하며, 원본 카드가 삭제될 때 함께 삭제됩니다.</p>
+              <p>카드 한&nbsp;장을 여러 상위 노드에 연결할 때 원래 노드를 제외한 나머지는 같은 카드를 참조하는 심링크&nbsp;노드로 생성됩니다. 그림처럼 결제 재시도 카드의 키 보관 시간을 48시간으로 수정하면, 에이전트와 사람은 설계 결정과 운영 인시던트, 레퍼런스 세&nbsp;폴더에서 모두 바뀐 본문을 확인합니다. 심링크&nbsp;노드는 서브트리를 컴파일할 때 원래 노드의 하위 항목까지 포함하되 같은 카드가 경로에 반복되면 순환으로 표시하며, 원본 카드가 삭제될 때 함께 삭제됩니다.</p>
               <figure class="diagram-figure diagram-figure--motion" data-motion="symlink" role="button" tabindex="0" aria-pressed="false" aria-label="심링크 반영 장면 애니메이션" aria-describedby="atom-symlink-desc-d">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 268" role="img" aria-labelledby="atom-symlink-title-d atom-symlink-desc-d">
                   <title id="atom-symlink-title-d">원본 카드 하나와 트리 세 곳의 연결 구조</title>
@@ -328,7 +328,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <p>에이전트는 같은 컴퓨터의 stdio나 API&nbsp;키 헤더를 포함한 HTTP 요청으로 MCP 서버에 연결하며, API&nbsp;키는 읽기와 쓰기 두 범위로 구분되어 읽기 키에는 조회 도구만 제공됩니다. <code>batch_op</code> 도구는 카드 생성과 심링크 연결, 수정, 순서 변경, 삭제를 한 트랜잭션에서 처리하며, 하나라도 실패하면 전체 변경을 되돌립니다. 에이전트는 한 요청 안에서 방금 만든 카드를 상위 노드로 지정해 하위 카드를 이어서 추가합니다.</p>
+              <p>에이전트는 같은 컴퓨터의 stdio나 API&nbsp;키 헤더를 포함한 HTTP 요청으로 MCP 서버에 연결하며, API&nbsp;키는 읽기와 쓰기 두&nbsp;범위로 구분되어 읽기 키에는 조회 도구만 제공됩니다. <code>batch_op</code> 도구는 카드 생성과 심링크 연결, 수정, 순서 변경, 삭제를 한&nbsp;트랜잭션에서 처리하며, 하나라도 실패하면 전체 변경을 되돌립니다. 에이전트는 한&nbsp;요청 안에서 방금 만든 카드를 상위 노드로 지정해 하위 카드를 이어서 추가합니다.</p>
               <figure class="diagram-figure">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 256" role="img" aria-labelledby="atom-tools-title-d atom-tools-desc-d">
                   <title id="atom-tools-title-d">atom MCP 도구 17개 네 묶음 구성</title>
@@ -417,7 +417,7 @@
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <p>에이전트는 <code>search_cards</code> 도구로 제목과 본문을 검색해 관련도 순으로 기본 20건까지 조회하며, 태그나 종류, 수정 시각을 조건으로 지정하고 결과마다 상위 제목 경로를 함께 받습니다. 선택 기능으로 외부 판정 서비스를 연결하면 시스템은 그림처럼 한 번에 후보 카드를 48장까지 질의와 대조해 0에서&nbsp;1&nbsp;사이 점수로 평가합니다. 사용자가 OpenAI 키를 등록하면 카드 임베딩으로 비슷한 카드도 찾을 수 있습니다.</p>
+              <p>에이전트는 <code>search_cards</code> 도구로 제목과 본문을 검색해 관련도 순으로 기본 20건까지 조회하며, 태그나 종류, 수정 시각을 조건으로 지정하고 결과마다 상위 제목 경로를 함께 받습니다. 선택 기능으로 외부 판정 서비스를 연결하면 시스템은 그림처럼 한&nbsp;번에 후보 카드를 48장까지 질의와 대조해 0에서&nbsp;1&nbsp;사이 점수로 평가합니다. 사용자가 OpenAI 키를 등록하면 카드 임베딩으로 비슷한 카드도 찾을 수 있습니다.</p>
               <figure class="diagram-figure diagram-figure--motion" data-motion="search" role="button" tabindex="0" aria-pressed="false" aria-label="검색 판정 장면 애니메이션" aria-describedby="atom-search-desc-d">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 216" role="img" aria-labelledby="atom-search-title-d atom-search-desc-d">
                   <title id="atom-search-title-d">질의에서 후보 카드 판정과 선정 과정</title>
