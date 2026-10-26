@@ -196,6 +196,7 @@
   .eyebrow-link:focus-visible,
   .action-link:focus-visible,
   .capture-frame:focus-visible,
+  .diagram-figure--motion:focus-visible,
   .footer-link:focus-visible {
     outline: var(--line-strong) solid Highlight;
     outline-offset: var(--focus-outline-offset);
@@ -420,6 +421,10 @@ a {
   text-wrap: pretty;
 }
 
+.hero-grid .summary-stat-note {
+  margin: var(--space-1) var(--zero) var(--zero);
+}
+
 .hero-actions,
 .action-links {
   display: flex;
@@ -492,6 +497,10 @@ a {
     grid-column: 8 / span 5;
     max-width: none;
     margin: var(--zero);
+  }
+
+  .hero-grid .summary-stat-note {
+    grid-column: 8 / span 5;
   }
 
   .summary-meta {
@@ -822,6 +831,10 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   container-type: inline-size;
 }
 
+.diagram-figure--motion {
+  cursor: pointer;
+}
+
 .diagram-svg {
   display: block;
   width: 100%;
@@ -922,6 +935,43 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   fill: none;
   stroke: var(--accent);
   stroke-width: var(--line);
+}
+
+.diagram-svg .svg-bar-track {
+  fill: var(--rule);
+}
+
+.diagram-svg .svg-bar-fill {
+  fill: var(--accent);
+}
+
+.diagram-svg .svg-line-pulse {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: var(--line-strong);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.diagram-svg .symlink-value--active {
+  fill: var(--accent);
+  font-weight: 600;
+}
+
+.diagram-svg .symlink-box--flash {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-width: var(--line-strong);
+}
+
+.diagram-svg .search-card--excluded {
+  opacity: 0.62;
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+  .diagram-svg .search-card--excluded {
+    opacity: 1;
+  }
 }
 
 .depth-toolbar {
@@ -1240,6 +1290,7 @@ tbody tr:last-child td {
 .eyebrow-link:focus-visible,
 .action-link:focus-visible,
 .capture-frame:focus-visible,
+.diagram-figure--motion:focus-visible,
 .summary-stat-link:focus-visible,
 .footer-link:focus-visible {
   outline: var(--line-strong) solid var(--focus);
