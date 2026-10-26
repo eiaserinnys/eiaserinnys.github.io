@@ -363,12 +363,14 @@
     const t = ((rawSeconds % cycle) + cycle) % cycle;
     const svgs = [...figure.querySelectorAll("svg")];
     const fadeOut = t >= 5.7 && t < 6.1 ? 1 - (t - 5.7) / 0.4 : t >= 6.1 ? (t - 6.1) / 0.4 : 1;
+    const fadeStr = String(clamp(fadeOut, 0, 1));
     const isResetPhase = t >= 6.1;
     const sourceUpdated = !isResetPhase && t >= 1.1;
     const sourceFlash = !isResetPhase && t >= 1.1 && t < 1.65;
-    const targetUpdateTimes = [2.05, 2.33, 2.61];
     const pulseStarts = [1.7, 1.98, 2.26];
     const pulseDuration = 0.55;
+    const pulseTravel = 0.52;
+    const targetUpdateTimes = pulseStarts.map(start => Number((start + pulseTravel).toFixed(2)));
 
     svgs.forEach(svg => {
       const sourceBox = svg.querySelector('[data-symlink-box="source"]');
@@ -380,10 +382,15 @@
         const nextText = sourceUpdated ? "48" : "24";
         if (sourceNum && sourceNum.textContent !== nextText) sourceNum.textContent = nextText;
         sourceVal.classList.toggle("symlink-value--active", sourceUpdated);
+        sourceVal.setAttribute("fill-opacity", fadeStr);
+        sourceVal.style.fillOpacity = fadeStr;
       }
 
       const sourceLine = svg.querySelector('[data-symlink-line="source"]');
-      if (sourceLine) sourceLine.style.opacity = String(clamp(fadeOut, 0, 1));
+      if (sourceLine) {
+        sourceLine.setAttribute("fill-opacity", fadeStr);
+        sourceLine.style.fillOpacity = fadeStr;
+      }
 
       for (let i = 0; i < 3; i += 1) {
         const updated = !isResetPhase && t >= targetUpdateTimes[i];
@@ -397,10 +404,15 @@
           const nextText = updated ? "48" : "24";
           if (num && num.textContent !== nextText) num.textContent = nextText;
           val.classList.toggle("symlink-value--active", updated);
+          val.setAttribute("fill-opacity", fadeStr);
+          val.style.fillOpacity = fadeStr;
         }
 
         const lineText = svg.querySelector(`[data-symlink-line="${i}"]`);
-        if (lineText) lineText.style.opacity = String(clamp(fadeOut, 0, 1));
+        if (lineText) {
+          lineText.setAttribute("fill-opacity", fadeStr);
+          lineText.style.fillOpacity = fadeStr;
+        }
 
         const pulse = svg.querySelector(`[data-symlink-pulse="${i}"]`);
         if (pulse) {
@@ -519,7 +531,9 @@
         }
 
         if (verdictEl) {
-          verdictEl.style.opacity = String(verdictOpacity);
+          const vStr = String(verdictOpacity);
+          verdictEl.setAttribute("fill-opacity", vStr);
+          verdictEl.style.fillOpacity = vStr;
         }
       }
     });
@@ -534,7 +548,10 @@
     const endSceneTime = type === "symlink" ? 4.0 : 4.5;
     const baseLabel = (figure.getAttribute("aria-label") || "")
       .replace(/\s*\([^)]*\)\s*$/, "")
-      .replace(/\s*(일시정지|재개)$/, "");
+      .replace(/\s*(일시정지|재개)$/, "")
+      .trim();
+    const descEl = figure.querySelector("svg desc[id]");
+    const describedBy = figure.getAttribute("aria-describedby") || (descEl ? descEl.id : "");
     const parentItem = figure.closest(".index-item");
 
     const controller = {
@@ -543,6 +560,7 @@
       render,
       endSceneTime,
       baseLabel,
+      describedBy,
       parentItem,
       elapsed: 0,
       lastTimestamp: null,
@@ -552,11 +570,25 @@
     };
 
     function updateAria() {
+      if (reducedMotion.matches) {
+        figure.removeAttribute("tabindex");
+        figure.removeAttribute("role");
+        figure.removeAttribute("aria-pressed");
+        figure.removeAttribute("aria-label");
+        figure.removeAttribute("aria-describedby");
+        figure.style.cursor = "default";
+        return;
+      }
+      figure.setAttribute("tabindex", "0");
+      figure.setAttribute("role", "button");
       figure.setAttribute("aria-pressed", String(controller.userPaused));
       if (controller.baseLabel) {
-        const suffix = controller.userPaused ? " (일시정지됨, 누르면 재개)" : " (재생 중, 누르면 일시정지)";
-        figure.setAttribute("aria-label", controller.baseLabel + suffix);
+        figure.setAttribute("aria-label", controller.baseLabel);
       }
+      if (controller.describedBy) {
+        figure.setAttribute("aria-describedby", controller.describedBy);
+      }
+      figure.style.removeProperty("cursor");
     }
 
     function stopLoop() {
@@ -579,6 +611,7 @@
     }
 
     function sync() {
+      updateAria();
       if (reducedMotion.matches) {
         stopLoop();
         controller.render(figure, controller.endSceneTime);
@@ -606,7 +639,13 @@
     });
 
     figure.addEventListener("keydown", event => {
-      if (event.key === " " || event.key === "Spacebar" || event.code === "Space") {
+      if (
+        event.key === " " ||
+        event.key === "Spacebar" ||
+        event.code === "Space" ||
+        event.key === "Enter" ||
+        event.code === "Enter"
+      ) {
         event.preventDefault();
         event.stopPropagation();
         togglePause();
@@ -621,7 +660,7 @@
     controller.stopLoop = stopLoop;
     controller.updateAria = updateAria;
     motionControllers.set(type, controller);
-    updateAria();
+    sync();
   });
 
   if (motionFigures.length > 0) {
@@ -660,8 +699,12 @@
       running: controller.raf !== null,
       inViewport: controller.inViewport,
       userPaused: controller.userPaused,
+      role: controller.figure.getAttribute("role"),
+      tabindex: controller.figure.getAttribute("tabindex"),
       ariaPressed: controller.figure.getAttribute("aria-pressed"),
-      ariaLabel: controller.figure.getAttribute("aria-label")
+      ariaLabel: controller.figure.getAttribute("aria-label"),
+      ariaDescribedby: controller.figure.getAttribute("aria-describedby"),
+      cursor: getComputedStyle(controller.figure).cursor
     };
   };
 

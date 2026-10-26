@@ -1551,6 +1551,10 @@ tbody tr:last-child td {
     transition-duration: var(--zero);
     transition-delay: var(--zero);
   }
+
+  .diagram-figure--motion {
+    cursor: default;
+  }
 }
 
 @media print {
