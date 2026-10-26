@@ -102,6 +102,11 @@
   --mobile-recommendation-size: 18px;
   --mobile-number-size: 13px;
   --mobile-row-inset: 20px;
+  --mobile-figure-size: 15px;
+  --diagram-desktop-max: 932.8px;
+  --diagram-mobile-max: 400px;
+  --list-thumb-desktop-height: 320px;
+  --list-thumb-mobile-height: 180px;
 }
 
 :root[data-theme="dark"] {
@@ -770,27 +775,40 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   height: auto;
 }
 
-.capture-theme--dark {
-  display: none;
+.capture-frame--list-thumb img {
+  height: var(--list-thumb-desktop-height);
+  object-fit: cover;
+  object-position: top center;
 }
 
+.capture-frame--home-crop img {
+  aspect-ratio: 1440 / 600;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.capture-theme--dark,
 .capture-frame img.capture-theme--dark {
   display: none;
 }
 
+:root[data-theme="dark"] .capture-theme--light,
 :root[data-theme="dark"] .capture-frame img.capture-theme--light {
   display: none;
 }
 
+:root[data-theme="dark"] .capture-theme--dark,
 :root[data-theme="dark"] .capture-frame img.capture-theme--dark {
   display: block;
 }
 
 @media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .capture-theme--light,
   :root:not([data-theme]) .capture-frame img.capture-theme--light {
     display: none;
   }
 
+  :root:not([data-theme]) .capture-theme--dark,
   :root:not([data-theme]) .capture-frame img.capture-theme--dark {
     display: block;
   }
@@ -808,18 +826,21 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   display: block;
   width: 100%;
   height: auto;
+  justify-self: start;
   color: var(--ink);
 }
 
 .diagram-svg--desktop {
   display: none;
+  max-width: var(--diagram-desktop-max);
 }
 
 .diagram-svg--mobile {
   display: block;
+  max-width: var(--diagram-mobile-max);
 }
 
-@container diagram-figure (min-width: 720px) {
+@container diagram-figure (min-width: 848px) {
   .diagram-svg--desktop {
     display: block;
   }
@@ -844,6 +865,12 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   font-family: var(--font-mono);
   font-size: var(--note-size);
   font-variant-numeric: tabular-nums;
+}
+
+.diagram-svg--mobile text,
+.diagram-svg--mobile .svg-title,
+.diagram-svg--mobile .svg-mono {
+  font-size: var(--mobile-figure-size);
 }
 
 .diagram-svg .svg-muted {
@@ -898,18 +925,24 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
 }
 
 .depth-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  justify-items: start;
   gap: var(--space-1);
 }
 
 .depth-toolbar-label {
-  margin-inline-end: var(--space-1);
   color: var(--ink-2);
   font-family: var(--font-mono);
   font-size: var(--meta-size);
   font-weight: 500;
+  line-height: 1.2;
+}
+
+.depth-buttons {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-1);
 }
 
 .depth-button {
@@ -922,6 +955,7 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
   font-family: var(--font-mono);
   font-size: var(--meta-size);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .depth-button[aria-pressed="true"] {
@@ -954,6 +988,9 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
 }
 
 .summary-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: var(--zero);
   padding: var(--space-2) var(--space-1) var(--space-2) var(--zero);
 }
@@ -1000,7 +1037,8 @@ html[data-enhanced] .index-item.is-opening .detail-panel {
 
 .summary-stat-link {
   display: inline-block;
-  margin-block-start: var(--space-1);
+  margin-block-start: auto;
+  padding-block-start: var(--space-1);
   color: var(--accent);
   font-size: var(--note-size);
   font-weight: 500;
@@ -1251,10 +1289,14 @@ tbody tr:last-child td {
   }
 
   .summary-metric {
+    position: static;
     display: grid;
+    grid-template-columns: minmax(var(--zero), 1fr);
+    justify-content: end;
     justify-items: end;
     align-content: start;
-    gap: var(--zero);
+    gap: var(--space-1);
+    height: auto;
     text-align: end;
   }
 
@@ -1288,6 +1330,7 @@ tbody tr:last-child td {
 
   html {
     scroll-padding-block-start: var(--zero);
+    scrollbar-gutter: auto;
   }
 
   .page-shell {
@@ -1388,6 +1431,10 @@ tbody tr:last-child td {
     padding-block: var(--space-2) var(--space-4);
     padding-inline-start: var(--space-5);
     padding-inline-end: var(--zero);
+  }
+
+  .capture-frame--list-thumb img {
+    height: var(--list-thumb-mobile-height);
   }
 
   .summary-stats {

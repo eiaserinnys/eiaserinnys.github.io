@@ -44,7 +44,7 @@
         <h1>
           <span>atom</span>
         </h1>
-        <p class="lede">에이전트가 MCP로 읽고 쓰며, 사람은 웹 대시보드에서 트리와 문서를 확인하는 지식 베이스다.</p>
+        <p class="lede">에이전트가 MCP로 쓰고, 사람은 웹&nbsp;대시보드에서 확인하는 지식&nbsp;베이스다.</p>
       </div>
       <div class="hero-actions">
         <a class="action-link action-link--primary" href="https://github.com/eiaserinnys/atom">GitHub</a>
@@ -60,18 +60,20 @@
               <span class="summary-number">01</span>
               <span class="summary-title">대시보드</span>
             </span>
-            <span class="summary-claim">사람은 트리, 문서, 카드 세 칸에서 에이전트가 고친 내용을 확인한다.</span>
+            <span class="summary-claim">사람은 트리와 문서, 카드를 나란히 놓고 에이전트가 고친 내용을 본다.</span>
             <span class="summary-metric">
-              <span class="summary-metric-value">3<span class="unit">칸</span></span>
-              <span class="summary-metric-label">대시보드 화면</span>
+              <span class="summary-metric-value">실시간</span>
+              <span class="summary-metric-label">변경&nbsp;반영</span>
             </span>
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
-              <div class="capture-frame">
-                <img class="capture-theme--light" src="./images/dashboard-light.png" width="2880" height="1800" alt="atom 대시보드 라이트 화면: 왼쪽 트리, 가운데 서브트리 컴파일 문서, 오른쪽 카드 상세">
-                <img class="capture-theme--dark" src="./images/dashboard-dark.png" width="2880" height="1800" alt="atom 대시보드 다크 화면: 왼쪽 트리, 가운데 서브트리 컴파일 문서, 오른쪽 카드 상세">
-              </div>
+              <a class="capture-frame capture-theme--light" href="./images/dashboard-light.png" aria-label="atom 대시보드 원본 크기로 보기">
+                <img src="./images/dashboard-light.png" width="2880" height="1800" alt="atom 대시보드 라이트 화면: 왼쪽 트리, 가운데 서브트리 컴파일 문서, 오른쪽 카드 상세">
+              </a>
+              <a class="capture-frame capture-theme--dark" href="./images/dashboard-dark.png" aria-label="atom 대시보드 다크 화면 원본 크기로 보기">
+                <img src="./images/dashboard-dark.png" width="2880" height="1800" alt="atom 대시보드 다크 화면: 왼쪽 트리, 가운데 서브트리 컴파일 문서, 오른쪽 카드 상세">
+              </a>
             </div>
           </div>
         </details>
@@ -81,66 +83,64 @@
           <summary class="index-summary" id="summary-s2">
             <span class="summary-meta">
               <span class="summary-number">02</span>
-              <span class="summary-title">카드와 자리</span>
+              <span class="summary-title">심링크</span>
             </span>
-            <span class="summary-claim">카드 하나를 여러 노드에서 참조해, 한 번 고치면 연결된 모든 노드에 반영된다.</span>
+            <span class="summary-claim">카드 하나를 트리 여러&nbsp;곳에 두고, 한&nbsp;번 고치면 모든&nbsp;곳에 반영된다.</span>
             <span class="summary-metric">
               <span class="summary-metric-value">1 → N</span>
-              <span class="summary-metric-label">카드와 자리</span>
+              <span class="summary-metric-label">원본 → 위치</span>
             </span>
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
               <figure class="diagram-figure">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 216" role="img" aria-labelledby="atom-symlink-title-d atom-symlink-desc-d">
-                  <title id="atom-symlink-title-d">카드 하나와 트리 세 곳의 연결 구조</title>
-                  <desc id="atom-symlink-desc-d">결제는 멱등 키로 재시도한다 카드 하나가 설계 결정의 원래 노드와 운영 인시던트, 레퍼런스의 심링크 노드에 동시에 연결된다.</desc>
-                  <rect class="svg-box-strong" x="1" y="48" width="296" height="120"></rect>
-                  <text class="svg-muted" x="20" y="78"><tspan class="svg-mono">Card</tspan> (원본 하나)</text>
-                  <text class="svg-title" x="20" y="108">결제는 멱등 키로 재시도한다</text>
-                  <text class="svg-muted" x="20" y="140">한 번 수정하면 세 곳에 바로 반영</text>
+                  <title id="atom-symlink-title-d">원본 카드 하나와 트리 세 곳의 연결 구조</title>
+                  <desc id="atom-symlink-desc-d">결제는 멱등 키로 재시도한다 원본 카드가 설계 결정의 원래 자리와 운영 인시던트, 레퍼런스의 심링크 자리에 연결된다.</desc>
+                  <rect class="svg-box-strong" x="1" y="64" width="296" height="88"></rect>
+                  <text class="svg-muted" x="20" y="96">원본 카드</text>
+                  <text class="svg-title" x="20" y="126">결제는 멱등 키로 재시도한다</text>
 
                   <path class="svg-line" d="M297 108 H368 V38 H420"></path>
                   <path class="svg-line-accent" d="M297 108 H420"></path>
                   <path class="svg-line-accent" d="M297 108 H368 V178 H420"></path>
 
                   <rect class="svg-box-strong" x="420" y="8" width="427" height="60"></rect>
-                  <text class="svg-muted" x="438" y="31">설계 결정 (원래 노드)</text>
-                  <text x="438" y="54">결제는 멱등 키로 재시도한다</text>
+                  <text class="svg-muted" x="438" y="31">원래 자리</text>
+                  <text class="svg-title" x="438" y="54">설계 결정</text>
 
                   <rect class="svg-box-accent" x="420" y="78" width="427" height="60"></rect>
-                  <text class="svg-accent" x="438" y="101">운영 인시던트 (심링크)</text>
-                  <text x="438" y="124"><tspan class="svg-mono">~</tspan> 결제는 멱등 키로 재시도한다</text>
+                  <text class="svg-accent" x="438" y="101">심링크</text>
+                  <text class="svg-title" x="438" y="124">운영 인시던트</text>
 
                   <rect class="svg-box-accent" x="420" y="148" width="427" height="60"></rect>
-                  <text class="svg-accent" x="438" y="171">레퍼런스 (심링크)</text>
-                  <text x="438" y="194"><tspan class="svg-mono">~</tspan> 결제는 멱등 키로 재시도한다</text>
+                  <text class="svg-accent" x="438" y="171">심링크</text>
+                  <text class="svg-title" x="438" y="194">레퍼런스</text>
                 </svg>
 
-                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 350 328" role="img" aria-labelledby="atom-symlink-title-m atom-symlink-desc-m">
-                  <title id="atom-symlink-title-m">카드 하나와 트리 세 곳의 연결 구조</title>
-                  <desc id="atom-symlink-desc-m">결제는 멱등 키로 재시도한다 카드 하나가 설계 결정, 운영 인시던트, 레퍼런스 세 노드에 연결된다.</desc>
-                  <rect class="svg-box-strong" x="1" y="1" width="348" height="86"></rect>
-                  <text class="svg-muted" x="16" y="28"><tspan class="svg-mono">Card</tspan> (원본 하나)</text>
-                  <text class="svg-title" x="16" y="54">결제는 멱등 키로 재시도한다</text>
-                  <text class="svg-muted" x="16" y="76">한 번 수정하면 세 곳에 바로 반영</text>
+                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 304" role="img" aria-labelledby="atom-symlink-title-m atom-symlink-desc-m">
+                  <title id="atom-symlink-title-m">원본 카드 하나와 트리 세 곳의 연결 구조</title>
+                  <desc id="atom-symlink-desc-m">결제는 멱등 키로 재시도한다 원본 카드가 설계 결정의 원래 자리와 운영 인시던트, 레퍼런스의 심링크 자리에 연결된다.</desc>
+                  <rect class="svg-box-strong" x="1" y="1" width="318" height="68"></rect>
+                  <text class="svg-muted" x="16" y="27">원본 카드</text>
+                  <text class="svg-title" x="16" y="53">결제는 멱등 키로 재시도한다</text>
 
-                  <path class="svg-line-accent" d="M28 87 V292"></path>
-                  <path class="svg-line" d="M28 136 H48"></path>
-                  <path class="svg-line-accent" d="M28 214 H48"></path>
-                  <path class="svg-line-accent" d="M28 292 H48"></path>
+                  <path class="svg-line-accent" d="M20 69 V270"></path>
+                  <path class="svg-line" d="M20 116 H40"></path>
+                  <path class="svg-line-accent" d="M20 193 H40"></path>
+                  <path class="svg-line-accent" d="M20 270 H40"></path>
 
-                  <rect class="svg-box-strong" x="48" y="104" width="301" height="64"></rect>
-                  <text class="svg-muted" x="64" y="128">설계 결정 (원래 노드)</text>
-                  <text x="64" y="152">결제는 멱등 키로 재시도한다</text>
+                  <rect class="svg-box-strong" x="40" y="84" width="279" height="64"></rect>
+                  <text class="svg-muted" x="56" y="109">원래 자리</text>
+                  <text class="svg-title" x="56" y="134">설계 결정</text>
 
-                  <rect class="svg-box-accent" x="48" y="182" width="301" height="64"></rect>
-                  <text class="svg-accent" x="64" y="206">운영 인시던트 (심링크)</text>
-                  <text x="64" y="230"><tspan class="svg-mono">~</tspan> 결제는 멱등 키로 재시도한다</text>
+                  <rect class="svg-box-accent" x="40" y="161" width="279" height="64"></rect>
+                  <text class="svg-accent" x="56" y="186">심링크</text>
+                  <text class="svg-title" x="56" y="211">운영 인시던트</text>
 
-                  <rect class="svg-box-accent" x="48" y="260" width="301" height="64"></rect>
-                  <text class="svg-accent" x="64" y="284">레퍼런스 (심링크)</text>
-                  <text x="64" y="308"><tspan class="svg-mono">~</tspan> 결제는 멱등 키로 재시도한다</text>
+                  <rect class="svg-box-accent" x="40" y="238" width="279" height="64"></rect>
+                  <text class="svg-accent" x="56" y="263">심링크</text>
+                  <text class="svg-title" x="56" y="288">레퍼런스</text>
                 </svg>
               </figure>
             </div>
@@ -154,10 +154,10 @@
               <span class="summary-number">03</span>
               <span class="summary-title">서브트리 컴파일</span>
             </span>
-            <span class="summary-claim">하위 트리를 지정한 깊이까지 문서 한 편으로 합쳐 에이전트에게 전달한다.</span>
+            <span class="summary-claim">하위&nbsp;트리를 원하는 깊이까지 엮어 문서 한&nbsp;편으로 에이전트에게 준다.</span>
             <span class="summary-metric">
-              <span class="summary-metric-value">depth</span>
-              <span class="summary-metric-label">컴파일 깊이</span>
+              <span class="summary-metric-value">1<span class="unit">회</span></span>
+              <span class="summary-metric-label">도구&nbsp;호출</span>
             </span>
           </summary>
           <div class="detail-panel">
@@ -165,8 +165,10 @@
               <figure class="diagram-figure" data-compile-depth="2">
                 <div class="depth-toolbar" role="group" aria-label="서브트리 컴파일 깊이 선택">
                   <span class="depth-toolbar-label">compile_subtree</span>
-                  <button class="control depth-button" type="button" data-depth-value="1" aria-pressed="false">depth 1</button>
-                  <button class="control depth-button" type="button" data-depth-value="2" aria-pressed="true">depth 2</button>
+                  <div class="depth-buttons">
+                    <button class="control depth-button" type="button" data-depth-value="1" aria-pressed="false">depth&#160;1</button>
+                    <button class="control depth-button" type="button" data-depth-value="2" aria-pressed="true">depth&#160;2</button>
+                  </div>
                 </div>
 
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 316" role="img" aria-labelledby="atom-compile-title-d atom-compile-desc-d">
@@ -222,49 +224,49 @@
                   </g>
                 </svg>
 
-                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 350 616" role="img" aria-labelledby="atom-compile-title-m atom-compile-desc-m">
+                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 616" role="img" aria-labelledby="atom-compile-title-m atom-compile-desc-m">
                   <title id="atom-compile-title-m">깊이별 서브트리 컴파일 범위와 결과 문서</title>
                   <desc id="atom-compile-desc-m">위쪽 브루라인 주문 앱 트리에서 선택한 깊이까지의 노드가 아래쪽 마크다운 문서 한 편으로 엮인다.</desc>
-                  <rect class="svg-box" x="1" y="1" width="348" height="296"></rect>
+                  <rect class="svg-box" x="1" y="1" width="318" height="296"></rect>
                   <text class="svg-title" x="16" y="28">브루라인 주문 앱</text>
 
-                  <path class="svg-line" d="M22 36 V220 M22 58 H36 M22 139 H36 M22 220 H36"></path>
+                  <path class="svg-line" d="M22 36 V220 M22 58 H34 M22 139 H34 M22 220 H34"></path>
                   <g class="compile-depth-1">
-                    <text class="svg-title" x="42" y="62">개요</text>
-                    <text class="svg-title" x="42" y="143">설계 결정</text>
-                    <text class="svg-title" x="42" y="224">운영 인시던트</text>
+                    <text class="svg-title" x="40" y="62">개요</text>
+                    <text class="svg-title" x="40" y="143">설계 결정</text>
+                    <text class="svg-title" x="40" y="224">운영 인시던트</text>
                   </g>
 
                   <g class="compile-depth-2">
-                    <path class="svg-line-accent" d="M50 70 V110 M50 86 H64 M50 110 H64"></path>
-                    <text x="70" y="90">주문 흐름</text>
-                    <text x="70" y="114">주문 상태는 다섯 단계</text>
+                    <path class="svg-line-accent" d="M46 70 V110 M46 86 H58 M46 110 H58"></path>
+                    <text x="64" y="90">주문 흐름</text>
+                    <text x="64" y="114">주문 상태는 다섯 단계</text>
 
-                    <path class="svg-line-accent" d="M50 151 V191 M50 167 H64 M50 191 H64"></path>
-                    <text x="70" y="171">결제는 멱등 키로 재시도한다</text>
-                    <text x="70" y="195">메뉴 캐시는 5분</text>
+                    <path class="svg-line-accent" d="M46 151 V191 M46 167 H58 M46 191 H58"></path>
+                    <text x="64" y="171">결제는 멱등 키로 재시도한다</text>
+                    <text x="64" y="195">메뉴 캐시는 5분</text>
 
-                    <path class="svg-line-accent" d="M50 232 V272 M50 248 H64 M50 272 H64"></path>
-                    <text x="70" y="252">결제 웹훅 중복 수신</text>
-                    <text x="70" y="276">새벽 알림 폭주</text>
+                    <path class="svg-line-accent" d="M46 232 V272 M46 248 H58 M46 272 H58"></path>
+                    <text x="64" y="252">결제 웹훅 중복 수신</text>
+                    <text x="64" y="276">새벽 알림 폭주</text>
                   </g>
 
-                  <path class="svg-line-accent" d="M175 297 V317"></path>
+                  <path class="svg-line-accent" d="M160 297 V317"></path>
 
-                  <rect class="svg-box-strong" x="1" y="317" width="348" height="298"></rect>
+                  <rect class="svg-box-strong" x="1" y="317" width="318" height="298"></rect>
                   <text class="svg-accent" x="16" y="344">엮인 마크다운 문서</text>
 
                   <g class="compile-doc-view-2">
                     <text class="svg-title" x="16" y="370"><tspan class="svg-mono">#</tspan> 브루라인 주문 앱</text>
                     <text class="svg-title" x="16" y="396"><tspan class="svg-mono">##</tspan> 개요</text>
-                    <text class="svg-accent" x="30" y="420"><tspan class="svg-mono">###</tspan> 주문 흐름</text>
-                    <text class="svg-accent" x="30" y="444"><tspan class="svg-mono">###</tspan> 주문 상태는 다섯 단계</text>
+                    <text class="svg-accent" x="28" y="420"><tspan class="svg-mono">###</tspan> 주문 흐름</text>
+                    <text class="svg-accent" x="28" y="444"><tspan class="svg-mono">###</tspan> 주문 상태는 다섯 단계</text>
                     <text class="svg-title" x="16" y="470"><tspan class="svg-mono">##</tspan> 설계 결정</text>
-                    <text class="svg-accent" x="30" y="494"><tspan class="svg-mono">###</tspan> 결제는 멱등 키로 재시도한다</text>
-                    <text class="svg-accent" x="30" y="518"><tspan class="svg-mono">###</tspan> 메뉴 캐시는 5분</text>
+                    <text class="svg-accent" x="28" y="494"><tspan class="svg-mono">###</tspan> 결제는 멱등 키로 재시도한다</text>
+                    <text class="svg-accent" x="28" y="518"><tspan class="svg-mono">###</tspan> 메뉴 캐시는 5분</text>
                     <text class="svg-title" x="16" y="544"><tspan class="svg-mono">##</tspan> 운영 인시던트</text>
-                    <text class="svg-accent" x="30" y="568"><tspan class="svg-mono">###</tspan> 결제 웹훅 중복 수신</text>
-                    <text class="svg-accent" x="30" y="592"><tspan class="svg-mono">###</tspan> 새벽 알림 폭주</text>
+                    <text class="svg-accent" x="28" y="568"><tspan class="svg-mono">###</tspan> 결제 웹훅 중복 수신</text>
+                    <text class="svg-accent" x="28" y="592"><tspan class="svg-mono">###</tspan> 새벽 알림 폭주</text>
                   </g>
 
                   <g class="compile-doc-view-1">
@@ -284,12 +286,12 @@
           <summary class="index-summary" id="summary-s4">
             <span class="summary-meta">
               <span class="summary-number">04</span>
-              <span class="summary-title">MCP 도구</span>
+              <span class="summary-title">MCP</span>
             </span>
-            <span class="summary-claim">에이전트는 MCP 도구 15개로 카드와 트리를 다루고, 여러 변경은 batch_op 한 번으로 묶는다.</span>
+            <span class="summary-claim">에이전트는 카드와 트리를 MCP로 직접 다루고, 여러 변경은 batch_op 한&nbsp;번으로 묶는다.</span>
             <span class="summary-metric">
               <span class="summary-metric-value">15</span>
-              <span class="summary-metric-label">MCP 도구</span>
+              <span class="summary-metric-label">도구</span>
             </span>
           </summary>
           <div class="detail-panel">
@@ -297,9 +299,9 @@
               <figure class="diagram-figure">
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 256" role="img" aria-labelledby="atom-tools-title-d atom-tools-desc-d">
                   <title id="atom-tools-title-d">atom MCP 도구 15개 네 묶음 구성</title>
-                  <desc id="atom-tools-desc-d">카드 5개, 트리 8개, 검색 1개, 묶음 1개(batch_op)의 네 묶음으로 이루어지며 batch_op이 여러 쓰기를 한 트랜잭션으로 묶는다.</desc>
+                  <desc id="atom-tools-desc-d">카드 5개, 트리 8개, 검색 1개, 묶음 1개(batch_op)의 네 묶음으로 이루어진다.</desc>
 
-                  <rect class="svg-box-strong" x="1" y="1" width="196" height="254"></rect>
+                  <rect class="svg-box-strong" x="1" y="1" width="200" height="254"></rect>
                   <text class="svg-title" x="18" y="32">카드 <tspan class="svg-mono">5</tspan></text>
                   <text class="svg-mono" x="18" y="62">create_card</text>
                   <text class="svg-mono" x="18" y="87">get_card</text>
@@ -307,50 +309,56 @@
                   <text class="svg-mono" x="18" y="137">delete_card</text>
                   <text class="svg-mono" x="18" y="162">get_backlinks</text>
 
-                  <rect class="svg-box-strong" x="213" y="1" width="196" height="254"></rect>
-                  <text class="svg-title" x="230" y="32">트리 <tspan class="svg-mono">8</tspan></text>
-                  <text class="svg-mono" x="230" y="62">get_node</text>
-                  <text class="svg-mono" x="230" y="87">list_children</text>
-                  <text class="svg-mono" x="230" y="112">get_tree</text>
-                  <text class="svg-mono" x="230" y="137">compile_subtree</text>
-                  <text class="svg-mono" x="230" y="162">create_symlink</text>
-                  <text class="svg-mono" x="230" y="187">move_node</text>
-                  <text class="svg-mono" x="230" y="212">update_node</text>
-                  <text class="svg-mono" x="230" y="237">delete_node</text>
+                  <rect class="svg-box-strong" x="216" y="1" width="200" height="254"></rect>
+                  <text class="svg-title" x="233" y="32">트리 <tspan class="svg-mono">8</tspan></text>
+                  <text class="svg-mono" x="233" y="62">get_node</text>
+                  <text class="svg-mono" x="233" y="87">list_children</text>
+                  <text class="svg-mono" x="233" y="112">get_tree</text>
+                  <text class="svg-mono" x="233" y="137">compile_subtree</text>
+                  <text class="svg-mono" x="233" y="162">create_symlink</text>
+                  <text class="svg-mono" x="233" y="187">move_node</text>
+                  <text class="svg-mono" x="233" y="212">update_node</text>
+                  <text class="svg-mono" x="233" y="237">delete_node</text>
 
-                  <rect class="svg-box-strong" x="425" y="1" width="180" height="254"></rect>
-                  <text class="svg-title" x="442" y="32">검색 <tspan class="svg-mono">1</tspan></text>
-                  <text class="svg-mono" x="442" y="62">search_cards</text>
+                  <rect class="svg-box-strong" x="431" y="1" width="200" height="254"></rect>
+                  <text class="svg-title" x="448" y="32">검색 <tspan class="svg-mono">1</tspan></text>
+                  <text class="svg-mono" x="448" y="62">search_cards</text>
 
-                  <rect class="svg-box-accent" x="621" y="1" width="226" height="254"></rect>
-                  <text class="svg-title" x="638" y="32">묶음 <tspan class="svg-mono">1</tspan></text>
-                  <text class="svg-mono svg-accent" x="638" y="62">batch_op</text>
-                  <text class="svg-muted" x="638" y="92">여러 쓰기를 한 트랜잭션으로</text>
+                  <rect class="svg-box-accent" x="646" y="1" width="200" height="254"></rect>
+                  <text class="svg-title" x="663" y="32">묶음 <tspan class="svg-mono">1</tspan></text>
+                  <text class="svg-mono svg-accent" x="663" y="62">batch_op</text>
                 </svg>
 
-                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 350 404" role="img" aria-labelledby="atom-tools-title-m atom-tools-desc-m">
+                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 430" role="img" aria-labelledby="atom-tools-title-m atom-tools-desc-m">
                   <title id="atom-tools-title-m">atom MCP 도구 15개 네 묶음 구성</title>
                   <desc id="atom-tools-desc-m">카드 5개, 트리 8개, 검색 1개, 묶음 1개(batch_op)의 네 묶음으로 이루어진다.</desc>
 
-                  <rect class="svg-box-strong" x="1" y="1" width="348" height="96"></rect>
+                  <rect class="svg-box-strong" x="1" y="1" width="318" height="116"></rect>
                   <text class="svg-title" x="16" y="28">카드 <tspan class="svg-mono">5</tspan></text>
-                  <text class="svg-mono" x="16" y="54">create_card, get_card, update_card,</text>
-                  <text class="svg-mono" x="16" y="80">delete_card, get_backlinks</text>
+                  <text class="svg-mono" x="16" y="54">create_card</text>
+                  <text class="svg-mono" x="164" y="54">get_card</text>
+                  <text class="svg-mono" x="16" y="78">update_card</text>
+                  <text class="svg-mono" x="164" y="78">delete_card</text>
+                  <text class="svg-mono" x="16" y="102">get_backlinks</text>
 
-                  <rect class="svg-box-strong" x="1" y="109" width="348" height="122"></rect>
-                  <text class="svg-title" x="16" y="136">트리 <tspan class="svg-mono">8</tspan></text>
-                  <text class="svg-mono" x="16" y="162">get_node, list_children, get_tree,</text>
-                  <text class="svg-mono" x="16" y="188">compile_subtree, create_symlink,</text>
-                  <text class="svg-mono" x="16" y="214">move_node, update_node, delete_node</text>
+                  <rect class="svg-box-strong" x="1" y="129" width="318" height="140"></rect>
+                  <text class="svg-title" x="16" y="156">트리 <tspan class="svg-mono">8</tspan></text>
+                  <text class="svg-mono" x="16" y="182">get_node</text>
+                  <text class="svg-mono" x="164" y="182">list_children</text>
+                  <text class="svg-mono" x="16" y="206">get_tree</text>
+                  <text class="svg-mono" x="164" y="206">compile_subtree</text>
+                  <text class="svg-mono" x="16" y="230">create_symlink</text>
+                  <text class="svg-mono" x="164" y="230">move_node</text>
+                  <text class="svg-mono" x="16" y="254">update_node</text>
+                  <text class="svg-mono" x="164" y="254">delete_node</text>
 
-                  <rect class="svg-box-strong" x="1" y="243" width="348" height="68"></rect>
-                  <text class="svg-title" x="16" y="270">검색 <tspan class="svg-mono">1</tspan></text>
-                  <text class="svg-mono" x="16" y="296">search_cards</text>
+                  <rect class="svg-box-strong" x="1" y="281" width="318" height="68"></rect>
+                  <text class="svg-title" x="16" y="308">검색 <tspan class="svg-mono">1</tspan></text>
+                  <text class="svg-mono" x="16" y="334">search_cards</text>
 
-                  <rect class="svg-box-accent" x="1" y="323" width="348" height="80"></rect>
-                  <text class="svg-title" x="16" y="350">묶음 <tspan class="svg-mono">1</tspan></text>
-                  <text class="svg-mono svg-accent" x="96" y="350">batch_op</text>
-                  <text class="svg-muted" x="16" y="380">여러 쓰기를 한 트랜잭션으로</text>
+                  <rect class="svg-box-accent" x="1" y="361" width="318" height="68"></rect>
+                  <text class="svg-title" x="16" y="388">묶음 <tspan class="svg-mono">1</tspan></text>
+                  <text class="svg-mono svg-accent" x="16" y="414">batch_op</text>
                 </svg>
               </figure>
             </div>
@@ -364,10 +372,10 @@
               <span class="summary-number">05</span>
               <span class="summary-title">검색</span>
             </span>
-            <span class="summary-claim">BM25 전문 검색으로 본문을 찾고, 검색 범위는 특정 하위 트리로 한정할 수 있다.</span>
+            <span class="summary-claim">본문 전체를 찾되, 검색&nbsp;범위를 하위&nbsp;트리 하나로 한정할&nbsp;수&nbsp;있다.</span>
             <span class="summary-metric">
               <span class="summary-metric-value">BM25</span>
-              <span class="summary-metric-label">전문 검색</span>
+              <span class="summary-metric-label">순위&nbsp;방식</span>
             </span>
           </summary>
           <div class="detail-panel">
@@ -376,56 +384,59 @@
                 <svg class="diagram-svg diagram-svg--desktop" viewBox="0 0 848 216" role="img" aria-labelledby="atom-search-title-d atom-search-desc-d">
                   <title id="atom-search-title-d">질의에서 후보 카드 판정과 선정 과정</title>
                   <desc id="atom-search-desc-d">결제가 두 번 되는 문제 질의에서 후보 카드 세 장의 점수를 매겨 결제는 멱등 키로 재시도한다(0.9)와 결제 웹훅 중복 수신(0.7)을 선정한다.</desc>
-                  <rect class="svg-box-strong" x="1" y="54" width="286" height="108"></rect>
+                  <rect class="svg-box-strong" x="1" y="54" width="296" height="108"></rect>
                   <text class="svg-muted" x="20" y="84">질의 (브루라인 주문 앱)</text>
                   <text class="svg-title" x="20" y="114">결제가 두 번 되는 문제</text>
-                  <text class="svg-muted" x="20" y="142"><tspan class="svg-mono">BM25</tspan> 후보 추출 후 <tspan class="svg-mono">Jev</tspan> 판정 선택</text>
+                  <text class="svg-muted" x="20" y="142"><tspan class="svg-mono">BM25</tspan> 후보 → 언어 모델 판정(선택)</text>
 
-                  <path class="svg-line-accent" d="M287 108 H356 V38 H408"></path>
-                  <path class="svg-line-accent" d="M287 108 H408"></path>
-                  <path class="svg-line-muted" d="M287 108 H356 V178 H408"></path>
+                  <path class="svg-line-accent" d="M297 108 H362 V38 H408"></path>
+                  <path class="svg-line-accent" d="M297 108 H408"></path>
+                  <path class="svg-line-muted" d="M297 108 H362 V178 H408"></path>
 
                   <rect class="svg-box-accent" x="408" y="8" width="439" height="60"></rect>
                   <text class="svg-title" x="426" y="34">결제는 멱등 키로 재시도한다</text>
                   <text class="svg-muted" x="426" y="56">설계 결정</text>
-                  <text class="svg-accent" x="828" y="42" text-anchor="end"><tspan class="svg-mono">0.9</tspan> 선정</text>
+                  <text class="svg-accent" x="828" y="56" text-anchor="end"><tspan class="svg-mono">0.9</tspan> 선정</text>
 
                   <rect class="svg-box-accent" x="408" y="78" width="439" height="60"></rect>
                   <text class="svg-title" x="426" y="104">결제 웹훅 중복 수신</text>
                   <text class="svg-muted" x="426" y="126">운영 인시던트</text>
-                  <text class="svg-accent" x="828" y="112" text-anchor="end"><tspan class="svg-mono">0.7</tspan> 선정</text>
+                  <text class="svg-accent" x="828" y="126" text-anchor="end"><tspan class="svg-mono">0.7</tspan> 선정</text>
 
                   <rect class="svg-box-muted" x="408" y="148" width="439" height="60"></rect>
                   <text class="svg-muted" x="426" y="174">PG사 결제 API 요약</text>
                   <text class="svg-muted" x="426" y="196">레퍼런스</text>
-                  <text class="svg-muted" x="828" y="182" text-anchor="end"><tspan class="svg-mono">0.4</tspan> 제외</text>
+                  <text class="svg-muted" x="828" y="196" text-anchor="end"><tspan class="svg-mono">0.4</tspan> 제외</text>
                 </svg>
 
-                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 350 328" role="img" aria-labelledby="atom-search-title-m atom-search-desc-m">
+                <svg class="diagram-svg diagram-svg--mobile" viewBox="0 0 320 328" role="img" aria-labelledby="atom-search-title-m atom-search-desc-m">
                   <title id="atom-search-title-m">질의에서 후보 카드 판정과 선정 과정</title>
-                  <desc id="atom-search-desc-m">결제가 두 번 되는 문제 질의에서 점수가 높은 결제는 멱등 키로 재시도한다(0.9)와 결제 웹훅 중복 수신(0.7)이 선정된다.</desc>
-                  <rect class="svg-box-strong" x="1" y="1" width="348" height="84"></rect>
-                  <text class="svg-muted" x="16" y="28">질의 (브루라인 주문 앱)</text>
-                  <text class="svg-title" x="16" y="54">결제가 두 번 되는 문제</text>
-                  <text class="svg-muted" x="16" y="74"><tspan class="svg-mono">BM25</tspan> 검색 + <tspan class="svg-mono">Jev</tspan> 판정 선택</text>
+                  <desc id="atom-search-desc-m">결제가 두 번 되는 문제 질의에서 후보 카드 세 장의 점수를 매겨 결제는 멱등 키로 재시도한다(0.9)와 결제 웹훅 중복 수신(0.7)을 선정한다.</desc>
+                  <rect class="svg-box-strong" x="1" y="1" width="318" height="86"></rect>
+                  <text class="svg-muted" x="16" y="27">질의 (브루라인 주문 앱)</text>
+                  <text class="svg-title" x="16" y="52">결제가 두 번 되는 문제</text>
+                  <text class="svg-muted" x="16" y="75"><tspan class="svg-mono">BM25</tspan> 후보 → 언어 모델 판정(선택)</text>
 
-                  <path class="svg-line-accent" d="M24 85 V214"></path>
-                  <path class="svg-line-muted" d="M24 214 V292"></path>
-                  <path class="svg-line-accent" d="M24 136 H44"></path>
-                  <path class="svg-line-accent" d="M24 214 H44"></path>
-                  <path class="svg-line-muted" d="M24 292 H44"></path>
+                  <path class="svg-line-accent" d="M18 87 V214"></path>
+                  <path class="svg-line-muted" d="M18 214 V292"></path>
+                  <path class="svg-line-accent" d="M18 136 H36"></path>
+                  <path class="svg-line-accent" d="M18 214 H36"></path>
+                  <path class="svg-line-muted" d="M18 292 H36"></path>
 
-                  <rect class="svg-box-accent" x="44" y="104" width="305" height="64"></rect>
-                  <text class="svg-accent" x="60" y="128"><tspan class="svg-mono">0.9</tspan> 선정 (설계 결정)</text>
-                  <text class="svg-title" x="60" y="154">결제는 멱등 키로 재시도한다</text>
+                  <rect class="svg-box-accent" x="36" y="104" width="283" height="64"></rect>
+                  <text class="svg-title" x="50" y="130">결제는 멱등 키로 재시도한다</text>
+                  <text class="svg-muted" x="50" y="154">설계 결정</text>
+                  <text class="svg-accent" x="305" y="154" text-anchor="end"><tspan class="svg-mono">0.9</tspan> 선정</text>
 
-                  <rect class="svg-box-accent" x="44" y="182" width="305" height="64"></rect>
-                  <text class="svg-accent" x="60" y="206"><tspan class="svg-mono">0.7</tspan> 선정 (운영 인시던트)</text>
-                  <text class="svg-title" x="60" y="232">결제 웹훅 중복 수신</text>
+                  <rect class="svg-box-accent" x="36" y="182" width="283" height="64"></rect>
+                  <text class="svg-title" x="50" y="208">결제 웹훅 중복 수신</text>
+                  <text class="svg-muted" x="50" y="232">운영 인시던트</text>
+                  <text class="svg-accent" x="305" y="232" text-anchor="end"><tspan class="svg-mono">0.7</tspan> 선정</text>
 
-                  <rect class="svg-box-muted" x="44" y="260" width="305" height="64"></rect>
-                  <text class="svg-muted" x="60" y="284"><tspan class="svg-mono">0.4</tspan> 제외 (레퍼런스)</text>
-                  <text class="svg-muted" x="60" y="310">PG사 결제 API 요약</text>
+                  <rect class="svg-box-muted" x="36" y="260" width="283" height="64"></rect>
+                  <text class="svg-muted" x="50" y="286">PG사 결제 API 요약</text>
+                  <text class="svg-muted" x="50" y="310">레퍼런스</text>
+                  <text class="svg-muted" x="305" y="310" text-anchor="end"><tspan class="svg-mono">0.4</tspan> 제외</text>
                 </svg>
               </figure>
             </div>
@@ -439,28 +450,28 @@
               <span class="summary-number">06</span>
               <span class="summary-title">설치</span>
             </span>
-            <span class="summary-claim">개발 환경에서는 SQLite 파일 하나로 시작하고, 운영 서버에서는 PostgreSQL로 전환한다.</span>
+            <span class="summary-claim">처음엔 DB&nbsp;서버 없이 띄우고, 운영&nbsp;서버에서는 PostgreSQL로 옮긴다.</span>
             <span class="summary-metric">
-              <span class="summary-metric-value">MIT</span>
-              <span class="summary-metric-label">라이선스</span>
+              <span class="summary-metric-value">1</span>
+              <span class="summary-metric-label">SQLite&nbsp;파일</span>
             </span>
           </summary>
           <div class="detail-panel">
             <div class="detail-content">
               <div class="summary-stats" aria-label="저장소 구성 방식">
                 <div class="summary-stat">
-                  <span class="summary-stat-label">로컬과 단일 서버</span>
+                  <span class="summary-stat-label">로컬과 단일&nbsp;서버</span>
                   <span class="summary-stat-value summary-stat-value--title">SQLite</span>
-                  <span class="summary-stat-note">별도 DB 서버 없이 단일 파일로 동작하며 FTS5 전문 검색을 포함한다.</span>
+                  <span class="summary-stat-note">단일&nbsp;파일, FTS5&nbsp;포함</span>
                 </div>
                 <div class="summary-stat">
-                  <span class="summary-stat-label">운영 서버</span>
+                  <span class="summary-stat-label">운영&nbsp;서버</span>
                   <span class="summary-stat-value summary-stat-value--title">PostgreSQL</span>
-                  <span class="summary-stat-note">스키마와 MCP 도구는 SQLite 판과 같고, 데이터베이스만 PostgreSQL로 바꿔 연결한다.</span>
+                  <span class="summary-stat-note">스키마와 도구&nbsp;동일</span>
                 </div>
               </div>
               <div class="action-links">
-                <a class="action-link action-link--primary" href="https://github.com/eiaserinnys/atom#readme">GitHub README 설치 안내</a>
+                <a class="action-link action-link--primary" href="https://github.com/eiaserinnys/atom#readme">설치 안내</a>
               </div>
             </div>
           </div>
