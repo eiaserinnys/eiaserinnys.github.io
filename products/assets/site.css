@@ -290,6 +290,10 @@ a {
   color: inherit;
 }
 
+code {
+  font-family: var(--font-mono);
+}
+
 .skip-link {
   position: absolute;
   z-index: 5;
@@ -566,6 +570,13 @@ a {
   cursor: pointer;
   list-style: none;
   text-align: start;
+}
+
+.index-summary:not(:has(.summary-claim, .summary-metric)) {
+  grid-template-rows: auto;
+  grid-template-areas: "meta .";
+  row-gap: var(--zero);
+  align-items: center;
 }
 
 .index-summary::-webkit-details-marker,
@@ -1322,7 +1333,8 @@ tbody tr:last-child td {
     --metric-gap: var(--tablet-metric-gap);
   }
 
-  .index-summary {
+  .index-summary,
+  .index-summary:not(:has(.summary-claim, .summary-metric)) {
     grid-template-columns: var(--tablet-number-column) minmax(var(--zero), 1fr) var(--metric-column);
     grid-template-rows: auto;
     grid-template-areas: "meta claim metric";
@@ -1415,6 +1427,12 @@ tbody tr:last-child td {
     column-gap: var(--space-1);
     row-gap: var(--space-1);
     padding-block: var(--mobile-row-inset);
+  }
+
+  .index-summary:not(:has(.summary-claim, .summary-metric)) {
+    grid-template-columns: minmax(var(--zero), 1fr);
+    grid-template-areas: "meta";
+    row-gap: var(--zero);
   }
 
   .summary-meta,
